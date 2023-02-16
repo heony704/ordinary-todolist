@@ -19,5 +19,6 @@
     "project": "./tsconfig.json"
   },
   "plugins": ["react", "@typescript-eslint"],
-  "rules": {}
+  "rules": {},
+  "ignorePatterns": ["tailwind.config.js"]
 }

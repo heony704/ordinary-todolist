@@ -1,2 +1,29 @@
-body {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply m-0;
+  }
+
+  body {
+    @apply bg-gray-50;
+    @apply dark:bg-gray-900;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded;
+    @apply bg-neutral-500/70;
+  }
+  ::-webkit-scrollbar-button {
+    @apply w-0;
+    @apply h-0;
+  }
 }
