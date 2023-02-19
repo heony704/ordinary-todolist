@@ -4,7 +4,7 @@ import Form, { FormInput, FormHelper } from 'src/components/Form';
 
 export default function LoginPage() {
   return (
-    <div className="flex flex-col items-center justify-center px-6 py-8 space-x-6 mx-auto md:h-screen lg:py-0">
+    <div className="flex flex-col items-center justify-center px-6 py-8 space-y-6 mx-auto md:h-screen lg:py-0">
       <Logo />
       <Form
         title="Login to your account"
