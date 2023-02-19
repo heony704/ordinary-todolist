@@ -8,6 +8,8 @@
   }
 
   body {
+    @apply w-full;
+    @apply min-h-screen;
     @apply bg-gray-50;
     @apply dark:bg-gray-900;
   }
