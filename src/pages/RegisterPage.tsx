@@ -1,31 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Logo from 'src/components/Logo';
 import Form, { FormInput, FormButton, FormHelper } from 'src/components/Form';
+import useFormState from 'src/hooks/useFormState';
 import { useRegister } from 'src/hooks/useAuth';
 
 export default function RegisterPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-
-  const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
-  };
-
-  const handleChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value);
-  };
-
-  const handleChangeConfirmPassword = (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    setConfirmPassword(event.target.value);
-  };
+  const [registerForm, handleInputChange] = useFormState({
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
 
   const register = useRegister();
 
   const handleSubmit = () => {
-    register(email, password);
+    register(registerForm.email, registerForm.password);
   };
 
   return (
@@ -37,24 +26,24 @@ export default function RegisterPage() {
           type="email"
           label="Your email"
           placeholder="name@company.com"
-          value={email}
-          onChange={handleChangeEmail}
+          value={registerForm.email}
+          onChange={handleInputChange}
         />
         <FormInput
           name="password"
           type="password"
           label="Password"
           placeholder="••••••••"
-          value={password}
-          onChange={handleChangePassword}
+          value={registerForm.password}
+          onChange={handleInputChange}
         />
         <FormInput
-          name="confirm-password"
+          name="confirmPassword"
           type="password"
           label="Confirm password"
           placeholder="••••••••"
-          value={confirmPassword}
-          onChange={handleChangeConfirmPassword}
+          value={registerForm.confirmPassword}
+          onChange={handleInputChange}
         />
         <FormButton text="Create an account" />
         <FormHelper

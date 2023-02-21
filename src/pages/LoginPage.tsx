@@ -1,24 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Logo from 'src/components/Logo';
 import Form, { FormInput, FormButton, FormHelper } from 'src/components/Form';
+import useFormState from 'src/hooks/useFormState';
 import { useLogin } from 'src/hooks/useAuth';
 
 export default function LoginPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event.target.value);
-  };
-
-  const handleChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event.target.value);
-  };
+  const [loginForm, handleInputChange] = useFormState({
+    email: '',
+    password: '',
+  });
 
   const login = useLogin();
 
   const handleSubmit = () => {
-    login(email, password);
+    login(loginForm.email, loginForm.password);
   };
 
   return (
@@ -30,16 +25,16 @@ export default function LoginPage() {
           type="email"
           label="Your email"
           placeholder="name@company.com"
-          value={email}
-          onChange={handleChangeEmail}
+          value={loginForm.email}
+          onChange={handleInputChange}
         />
         <FormInput
           name="password"
           type="password"
           label="Password"
           placeholder="••••••••"
-          value={password}
-          onChange={handleChangePassword}
+          value={loginForm.password}
+          onChange={handleInputChange}
         />
         <FormButton text="Sign in" />
         <FormHelper
