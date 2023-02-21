@@ -31,3 +31,11 @@ export const useRegister = () => {
 
   return register;
 };
+
+export const useLogout = () => {
+  const logout = () => {
+    localStorage.removeItem('access_token');
+  };
+
+  return logout;
+};
