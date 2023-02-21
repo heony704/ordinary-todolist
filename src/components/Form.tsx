@@ -36,7 +36,7 @@ type FormInputType = {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export function FormInput({
+function FormInput({
   name,
   type,
   label,
@@ -67,7 +67,7 @@ type FormButtonType = {
   text: string;
 };
 
-export function FormButton({ text }: FormButtonType) {
+function FormButton({ text }: FormButtonType) {
   return (
     <button
       type="submit"
@@ -84,7 +84,7 @@ type FormHelperType = {
   navigatePath?: string;
 };
 
-export function FormHelper({
+function FormHelper({
   helpText,
   navigateText = '',
   navigatePath = '/',
@@ -103,3 +103,7 @@ export function FormHelper({
     </p>
   );
 }
+
+Form.Input = FormInput;
+Form.Button = FormButton;
+Form.Helper = FormHelper;

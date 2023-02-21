@@ -1,6 +1,6 @@
 import React from 'react';
 import Logo from 'src/components/Logo';
-import Form, { FormInput, FormButton, FormHelper } from 'src/components/Form';
+import Form from 'src/components/Form';
 import useFormState from 'src/hooks/useFormState';
 import { useLogin } from 'src/hooks/useAuth';
 
@@ -20,7 +20,7 @@ export default function LoginPage() {
     <div className="flex flex-col items-center justify-center px-6 py-8 space-y-6 mx-auto md:h-screen lg:py-0">
       <Logo />
       <Form title="Login to your account" onSubmit={handleSubmit}>
-        <FormInput
+        <Form.Input
           name="email"
           type="email"
           label="Your email"
@@ -28,7 +28,7 @@ export default function LoginPage() {
           value={loginForm.email}
           onChange={handleInputChange}
         />
-        <FormInput
+        <Form.Input
           name="password"
           type="password"
           label="Password"
@@ -36,8 +36,8 @@ export default function LoginPage() {
           value={loginForm.password}
           onChange={handleInputChange}
         />
-        <FormButton text="Sign in" />
-        <FormHelper
+        <Form.Button text="Sign in" />
+        <Form.Helper
           helpText="Don’t have an account yet?"
           navigateText="Sign up"
           navigatePath="/register"

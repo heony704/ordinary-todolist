@@ -1,6 +1,6 @@
 import React from 'react';
 import Logo from 'src/components/Logo';
-import Form, { FormInput, FormButton, FormHelper } from 'src/components/Form';
+import Form from 'src/components/Form';
 import useFormState from 'src/hooks/useFormState';
 import { useRegister } from 'src/hooks/useAuth';
 
@@ -21,7 +21,7 @@ export default function RegisterPage() {
     <div className="flex flex-col items-center justify-center px-6 py-8 space-y-6 mx-auto md:h-screen lg:py-0">
       <Logo />
       <Form title="Create and account" onSubmit={handleSubmit}>
-        <FormInput
+        <Form.Input
           name="email"
           type="email"
           label="Your email"
@@ -29,7 +29,7 @@ export default function RegisterPage() {
           value={registerForm.email}
           onChange={handleInputChange}
         />
-        <FormInput
+        <Form.Input
           name="password"
           type="password"
           label="Password"
@@ -37,7 +37,7 @@ export default function RegisterPage() {
           value={registerForm.password}
           onChange={handleInputChange}
         />
-        <FormInput
+        <Form.Input
           name="confirmPassword"
           type="password"
           label="Confirm password"
@@ -45,8 +45,8 @@ export default function RegisterPage() {
           value={registerForm.confirmPassword}
           onChange={handleInputChange}
         />
-        <FormButton text="Create an account" />
-        <FormHelper
+        <Form.Button text="Create an account" />
+        <Form.Helper
           helpText="Already have an account?"
           navigateText="Login here"
           navigatePath="/login"
