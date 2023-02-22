@@ -1,11 +1,12 @@
 import React from 'react';
 import Logo from 'src/components/Logo';
-import { TbArrowDown } from 'react-icons/tb';
-import { useLogout } from 'src/hooks/useAuth';
-import Todo from '../components/Todo';
+import { HiOutlineChevronDown } from 'react-icons/hi';
+import Todo from 'src/components/Todo';
 
 export default function TodolistPage() {
-  const logout = useLogout();
+  const logout = () => {
+    localStorage.removeItem('access_token');
+  };
 
   return (
     <div className="flex flex-col items-center px-6 pt-6 max-w-3xl mx-auto">
@@ -28,7 +29,7 @@ export default function TodolistPage() {
           type="submit"
           className="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-primary-600 rounded-r-lg border border-primary-600 hover:bg-primary-700 focus:ring-2 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
         >
-          <TbArrowDown className="w-5 h-5" />
+          <HiOutlineChevronDown className="w-5 h-5" />
         </button>
       </div>
       <div className="w-full mt-10 space-y-6">
