@@ -1,9 +1,12 @@
 import React from 'react';
+import useAuthRouting from 'src/hooks/useAuthRouting';
 import Logo from 'src/components/Logo';
 import { HiOutlineChevronDown } from 'react-icons/hi';
 import Todo from 'src/components/Todo';
 
 export default function TodolistPage() {
+  useAuthRouting();
+
   const logout = () => {
     localStorage.removeItem('access_token');
   };
