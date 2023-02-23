@@ -18,7 +18,6 @@ export default function RegisterForm() {
   });
 
   const [Alert, alert] = useAlert();
-
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
@@ -71,7 +70,17 @@ export default function RegisterForm() {
           )}
           errorText="비밀번호가 일치하지 않습니다."
         />
-        <Form.Button text="Create an account" />
+        <Form.Button
+          text="Create an account"
+          disabled={
+            !isEmailValid(registerForm.email) ||
+            !isPasswordValid(registerForm.password) ||
+            !isPasswordMatch(
+              registerForm.password,
+              registerForm.confirmPassword,
+            )
+          }
+        />
         <Form.Helper
           helpText="Already have an account?"
           navigateText="Login here"

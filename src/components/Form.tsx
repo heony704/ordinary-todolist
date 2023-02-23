@@ -75,7 +75,6 @@ function FormInput({
         value={value}
         onChange={onChange}
         onBlur={startValidation}
-        required
       />
       {validationVisible && (
         <div className="absolute">
@@ -90,13 +89,15 @@ function FormInput({
 
 type FormButtonType = {
   text: string;
+  disabled?: boolean;
 };
 
-function FormButton({ text }: FormButtonType) {
+function FormButton({ text, disabled = false }: FormButtonType) {
   return (
     <button
       type="submit"
-      className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+      disabled={disabled}
+      className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center disabled:bg-primary-600/50 dark:disabled:text-gray-400 dark:focus:ring-primary-800"
     >
       {text}
     </button>

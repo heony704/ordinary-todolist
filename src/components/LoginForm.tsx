@@ -53,7 +53,13 @@ export default function LoginForm() {
           isValid={isPasswordValid(loginForm.password)}
           errorText="영문자, 숫자 포함 8자 이상 작성해주세요."
         />
-        <Form.Button text="Sign in" />
+        <Form.Button
+          text="Sign in"
+          disabled={
+            !isEmailValid(loginForm.email) ||
+            !isPasswordValid(loginForm.password)
+          }
+        />
         <Form.Helper
           helpText="Don’t have an account yet?"
           navigateText="Sign up"
