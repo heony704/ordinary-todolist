@@ -4,6 +4,7 @@ import Form from 'src/components/Form';
 import useFormState from 'src/hooks/useFormState';
 import useAlert from 'src/hooks/useAlert';
 import { login } from 'src/api/auth';
+import { isEmailValid, isPasswordValid } from 'src/utils/validate';
 
 export default function LoginForm() {
   const [loginForm, handleInputChange, resetForm] = useFormState({
@@ -12,7 +13,6 @@ export default function LoginForm() {
   });
 
   const [Alert, alert] = useAlert();
-
   const navigate = useNavigate();
 
   const handleSubmit = async () => {
@@ -30,7 +30,7 @@ export default function LoginForm() {
   };
 
   return (
-    <>
+    <div className="flex w-full justify-center">
       <Alert />
       <Form title="Login to your account" onSubmit={handleSubmit}>
         <Form.Input
@@ -40,6 +40,8 @@ export default function LoginForm() {
           placeholder="name@company.com"
           value={loginForm.email}
           onChange={handleInputChange}
+          isValid={isEmailValid(loginForm.email)}
+          errorText="이메일 형식이 적합하지 않습니다."
         />
         <Form.Input
           name="password"
@@ -48,6 +50,8 @@ export default function LoginForm() {
           placeholder="••••••••"
           value={loginForm.password}
           onChange={handleInputChange}
+          isValid={isPasswordValid(loginForm.password)}
+          errorText="영문자, 숫자 포함 8자 이상 작성해주세요."
         />
         <Form.Button text="Sign in" />
         <Form.Helper
@@ -56,6 +60,6 @@ export default function LoginForm() {
           navigatePath="/register"
         />
       </Form>
-    </>
+    </div>
   );
 }

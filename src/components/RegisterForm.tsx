@@ -4,6 +4,11 @@ import Form from 'src/components/Form';
 import useFormState from 'src/hooks/useFormState';
 import useAlert from 'src/hooks/useAlert';
 import { register } from 'src/api/auth';
+import {
+  isEmailValid,
+  isPasswordValid,
+  isPasswordMatch,
+} from 'src/utils/validate';
 
 export default function RegisterForm() {
   const [registerForm, handleInputChange, resetForm] = useFormState({
@@ -30,7 +35,7 @@ export default function RegisterForm() {
   };
 
   return (
-    <>
+    <div className="flex w-full justify-center">
       <Alert />
       <Form title="Create and account" onSubmit={handleSubmit}>
         <Form.Input
@@ -40,6 +45,8 @@ export default function RegisterForm() {
           placeholder="name@company.com"
           value={registerForm.email}
           onChange={handleInputChange}
+          isValid={isEmailValid(registerForm.email)}
+          errorText="이메일 형식이 적합하지 않습니다."
         />
         <Form.Input
           name="password"
@@ -48,6 +55,8 @@ export default function RegisterForm() {
           placeholder="••••••••"
           value={registerForm.password}
           onChange={handleInputChange}
+          isValid={isPasswordValid(registerForm.password)}
+          errorText="영문자, 숫자 포함 8자 이상 작성해주세요."
         />
         <Form.Input
           name="confirmPassword"
@@ -56,6 +65,11 @@ export default function RegisterForm() {
           placeholder="••••••••"
           value={registerForm.confirmPassword}
           onChange={handleInputChange}
+          isValid={isPasswordMatch(
+            registerForm.password,
+            registerForm.confirmPassword,
+          )}
+          errorText="비밀번호가 일치하지 않습니다."
         />
         <Form.Button text="Create an account" />
         <Form.Helper
@@ -64,6 +78,6 @@ export default function RegisterForm() {
           navigatePath="/login"
         />
       </Form>
-    </>
+    </div>
   );
 }

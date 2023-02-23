@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 type FormType = {
@@ -34,6 +34,8 @@ type FormInputType = {
   placeholder?: string;
   value: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  isValid?: boolean;
+  errorText?: string;
 };
 
 function FormInput({
@@ -43,23 +45,46 @@ function FormInput({
   placeholder = '',
   value,
   onChange,
+  isValid = true,
+  errorText = '',
 }: FormInputType) {
+  const [validateFlag, setValidateFlag] = useState(false);
+  const validationVisible = !isValid && validateFlag;
+  const startValidation = () => {
+    setValidateFlag(true);
+  };
+
   return (
-    <label
-      htmlFor={name}
-      className="block text-sm font-medium text-gray-900 dark:text-white"
-    >
-      {label}
+    <div className="space-y-1 pb-2">
+      <label
+        htmlFor={name}
+        className="block text-sm font-medium text-gray-900 dark:text-white"
+      >
+        {label}
+      </label>
       <input
         type={type}
         name={name}
         id={name}
-        className="mt-2 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        className={`${
+          !validationVisible
+            ? 'bg-gray-50 border-gray-300 text-gray-900 focus:ring-primary-600 focus:border-primary-600'
+            : 'bg-red-50 border-red-500 text-red-500 focus:ring-red-500 focus:border-red-500'
+        } border sm:text-sm rounded-lg focus:outline-none focus:ring-1 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        onBlur={startValidation}
+        required
       />
-    </label>
+      {validationVisible && (
+        <div className="absolute">
+          <p className="relative text-sm text-red-600 dark:text-red-500">
+            {errorText}
+          </p>
+        </div>
+      )}
+    </div>
   );
 }
 
