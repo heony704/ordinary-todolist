@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import useAuthRouting from 'src/hooks/useAuthRouting';
 import Logo from 'src/components/Logo';
 import { HiOutlineChevronDown } from 'react-icons/hi';
@@ -7,8 +8,10 @@ import Todo from 'src/components/Todo';
 export default function TodolistPage() {
   useAuthRouting();
 
+  const navigate = useNavigate();
   const logout = () => {
     localStorage.removeItem('access_token');
+    navigate('/login');
   };
 
   return (
