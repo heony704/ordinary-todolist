@@ -30,3 +30,34 @@ export const getTodos = async () => {
     return Promise.reject(error);
   }
 };
+
+export const updateTodo = async (
+  id: number,
+  todoItem: Pick<Todo, 'todo' | 'isCompleted'>,
+) => {
+  try {
+    const response = await apiClient.put(
+      `/todos/${id}`,
+      { todoItem },
+      {
+        headers: {
+          Authorization,
+        },
+      },
+    );
+    return response.data;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
+
+export const deleteTodo = async (id: number) => {
+  try {
+    const response = await apiClient.delete(`/todos/${id}`, {
+      headers: { Authorization },
+    });
+    return response.data;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};

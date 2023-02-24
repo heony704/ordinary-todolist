@@ -10,13 +10,16 @@ export default function TodoList() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!getToken()) navigate('/login');
+    if (!getToken()) {
+      navigate('/login');
+      return;
+    }
 
     async function fetchTodoList() {
       setTodoList(await getTodos());
     }
     fetchTodoList();
-  }, [todoList]);
+  });
 
   return (
     <div className="w-full mt-10 space-y-6">
@@ -24,7 +27,12 @@ export default function TodoList() {
         .slice(0)
         .reverse()
         .map(todo => (
-          <Todo todo={todo.todo} isCompleted={todo.isCompleted} key={todo.id} />
+          <Todo
+            key={todo.id}
+            id={todo.id}
+            todo={todo.todo}
+            isCompleted={todo.isCompleted}
+          />
         ))}
     </div>
   );
