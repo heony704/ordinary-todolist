@@ -9,10 +9,10 @@ type AlertType = {
 
 export default function Alert({ title, contents, onConfirm }: AlertType) {
   return (
-    <div className="bg-black/30 fixed inset-0 z-20 overflow-hidden flex w-screen h-screen bg-trasparent">
+    <div className="bg-black/30 fixed inset-0 z-20 overflow-hidden flex w-screen h-screen">
       <div
         role="alert"
-        className="w-96 p-4 m-auto flex flex-col text-red-800 shadow rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+        className="w-96 p-4 m-auto flex flex-col card-rounded card-red"
       >
         <div className="flex items-center">
           <HiExclamationCircle className="w-5 h-5 mr-2" />
@@ -22,7 +22,7 @@ export default function Alert({ title, contents, onConfirm }: AlertType) {
         <button
           type="button"
           onClick={onConfirm}
-          className=" text-white bg-red-800 hover:bg-red-900 focus:ring-2 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-xs px-4 py-1.5 text-center ml-auto dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+          className="font-medium rounded-lg text-xs px-4 py-1.5 text-center ml-auto button-red"
         >
           확인
         </button>

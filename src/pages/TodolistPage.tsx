@@ -17,7 +17,7 @@ export default function TodolistPage() {
         <Logo />
         <button
           type="button"
-          className="py-1.5 px-2.5 text-sm font-medium text-gray-900 bg-transparent rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-600 focus:ring-1 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:text-blue-700 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+          className="button-rounded-sm button-gray"
           onClick={logout}
         >
           Logout
@@ -25,12 +25,12 @@ export default function TodolistPage() {
       </div>
       <div className="relative w-full mt-6">
         <input
-          className="block p-2.5 pr-[3.3rem] w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
+          className="block p-2.5 pr-[3.3rem] w-full text-sm input-rounded input-white"
           placeholder="Input todos..."
         />
         <button
           type="submit"
-          className="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-primary-600 rounded-r-lg border border-primary-600 hover:bg-primary-700 focus:ring-2 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+          className="absolute top-0 right-0 p-2.5 text-sm font-medium rounded-r-lg button-primary border border-primary-600"
         >
           <HiOutlineChevronDown className="w-5 h-5" />
         </button>

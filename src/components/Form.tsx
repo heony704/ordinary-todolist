@@ -14,9 +14,9 @@ export default function Form({ title, onSubmit, children }: FormType) {
   };
 
   return (
-    <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+    <div className="w-full card-rounded card-white md:mt-0 sm:max-w-md xl:p-0">
       <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-        <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+        <h1 className="text-xl font-bold leading-tight tracking-tight text-black md:text-2xl">
           {title}
         </h1>
         <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
@@ -56,10 +56,7 @@ function FormInput({
 
   return (
     <div className="space-y-1 pb-2">
-      <label
-        htmlFor={name}
-        className="block text-sm font-medium text-gray-900 dark:text-white"
-      >
+      <label htmlFor={name} className="block text-sm font-medium text-black">
         {label}
       </label>
       <input
@@ -67,10 +64,8 @@ function FormInput({
         name={name}
         id={name}
         className={`${
-          !validationVisible
-            ? 'bg-gray-50 border-gray-300 text-gray-900 focus:ring-primary-600 focus:border-primary-600'
-            : 'bg-red-50 border-red-500 text-red-500 focus:ring-red-500 focus:border-red-500'
-        } border sm:text-sm rounded-lg focus:outline-none focus:ring-1 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500`}
+          !validationVisible ? 'input-gray' : 'input-red'
+        } input-rounded block w-full p-2.5 sm:text-sm`}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
@@ -78,9 +73,7 @@ function FormInput({
       />
       {validationVisible && (
         <div className="absolute">
-          <p className="relative text-sm text-red-600 dark:text-red-500">
-            {errorText}
-          </p>
+          <p className="relative text-sm text-red">{errorText}</p>
         </div>
       )}
     </div>
@@ -97,7 +90,7 @@ function FormButton({ text, disabled = false }: FormButtonType) {
     <button
       type="submit"
       disabled={disabled}
-      className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center disabled:bg-primary-600/50 dark:disabled:text-gray-400 dark:focus:ring-primary-800"
+      className="button-rounded-lg button-primary"
     >
       {text}
     </button>
@@ -116,12 +109,12 @@ function FormHelper({
   navigatePath = '/',
 }: FormHelperType) {
   return (
-    <p className="text-sm font-light text-gray-500 select-none dark:text-gray-400">
+    <p className="text-sm text-gray font-light select-none">
       {helpText}
       {navigateText !== '' && (
         <Link
           to={navigatePath}
-          className="font-medium text-primary-600 hover:underline pl-1 dark:text-primary-500"
+          className="font-medium text-primary hover:underline pl-1"
         >
           {navigateText}
         </Link>
