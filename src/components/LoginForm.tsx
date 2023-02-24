@@ -5,6 +5,7 @@ import useFormState from 'src/hooks/useFormState';
 import useAlert from 'src/hooks/useAlert';
 import { login } from 'src/api/auth';
 import { isEmailValid, isPasswordValid } from 'src/utils/validate';
+import { saveToken } from 'src/utils/token';
 
 export default function LoginForm() {
   const [loginForm, handleInputChange, resetForm] = useFormState({
@@ -18,7 +19,7 @@ export default function LoginForm() {
   const handleSubmit = async () => {
     try {
       const response = await login(loginForm.email, loginForm.password);
-      localStorage.setItem('access_token', response.access_token);
+      saveToken(response.access_token);
       navigate('/');
     } catch (error) {
       alert(
