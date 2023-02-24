@@ -1,22 +1,42 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import useAuthRouting from 'src/hooks/useAuthRouting';
 import Logo from 'src/components/Logo';
-import { TbArrowDown } from 'react-icons/tb';
-import Todo from '../components/Todo';
+import { HiOutlineChevronDown } from 'react-icons/hi';
+import Todo from 'src/components/Todo';
+import { removeToken } from 'src/utils/token';
 
 export default function TodolistPage() {
+  useAuthRouting();
+
+  const navigate = useNavigate();
+  const logout = () => {
+    removeToken();
+    navigate('/login');
+  };
+
   return (
     <div className="flex flex-col items-center px-6 pt-6 max-w-3xl mx-auto">
-      <Logo />
+      <div className="flex justify-between items-center w-full">
+        <Logo />
+        <button
+          type="button"
+          className="button-rounded-sm button-gray"
+          onClick={logout}
+        >
+          Logout
+        </button>
+      </div>
       <div className="relative w-full mt-6">
         <input
-          className="block p-2.5 pr-[3.3rem] w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
+          className="block p-2.5 pr-[3.3rem] w-full text-sm input-rounded input-white"
           placeholder="Input todos..."
         />
         <button
           type="submit"
-          className="absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-primary-600 rounded-r-lg border border-primary-600 hover:bg-primary-700 focus:ring focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+          className="absolute top-0 right-0 p-2.5 text-sm font-medium rounded-r-lg button-primary border border-primary-600"
         >
-          <TbArrowDown className="w-5 h-5" />
+          <HiOutlineChevronDown className="w-5 h-5" />
         </button>
       </div>
       <div className="w-full mt-10 space-y-6">
