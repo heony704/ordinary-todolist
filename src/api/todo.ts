@@ -1,19 +1,20 @@
+import axios from 'axios';
 import { getToken } from 'src/utils/token';
-import apiClient from './apiClient';
 
-const Authorization = `Bearer ${getToken()}`;
+const BASE_URL = 'https://pre-onboarding-selection-task.shop';
+const authToken = `Bearer ${getToken()}`;
+
+const todoAxios = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    'Content-Type': 'application/json',
+    Authorization: authToken,
+  },
+});
 
 export const createTodo = async (todo: string) => {
   try {
-    const response = await apiClient.post(
-      '/todos',
-      { todo },
-      {
-        headers: {
-          Authorization,
-        },
-      },
-    );
+    const response = await todoAxios.post('/todos', { todo });
     return response.data;
   } catch (error) {
     return Promise.reject(error);
@@ -22,9 +23,7 @@ export const createTodo = async (todo: string) => {
 
 export const getTodos = async () => {
   try {
-    const response = await apiClient.get('/todos', {
-      headers: { Authorization },
-    });
+    const response = await todoAxios.get('/todos');
     return response.data;
   } catch (error) {
     return Promise.reject(error);
@@ -37,15 +36,7 @@ export const updateTodo = async (
   isCompleted: boolean,
 ) => {
   try {
-    const response = await apiClient.put(
-      `/todos/${id}`,
-      { todo, isCompleted },
-      {
-        headers: {
-          Authorization,
-        },
-      },
-    );
+    const response = await todoAxios.put(`/todos/${id}`, { todo, isCompleted });
     return response.data;
   } catch (error) {
     return Promise.reject(error);
@@ -54,9 +45,7 @@ export const updateTodo = async (
 
 export const deleteTodo = async (id: number) => {
   try {
-    const response = await apiClient.delete(`/todos/${id}`, {
-      headers: { Authorization },
-    });
+    const response = await todoAxios.delete(`/todos/${id}`);
     return response.data;
   } catch (error) {
     return Promise.reject(error);
