@@ -33,12 +33,13 @@ export const getTodos = async () => {
 
 export const updateTodo = async (
   id: number,
-  todoItem: Pick<Todo, 'todo' | 'isCompleted'>,
+  todo: string,
+  isCompleted: boolean,
 ) => {
   try {
     const response = await apiClient.put(
       `/todos/${id}`,
-      { todoItem },
+      { todo, isCompleted },
       {
         headers: {
           Authorization,

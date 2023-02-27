@@ -39,10 +39,11 @@
 }
 
 @layer components {
-  .todo-rounded {
-    @apply rounded-lg border;
+  .todo {
+    @apply rounded-lg flex w-full p-2.5 text-sm;
   }
   .todo-white {
+    @apply text-black border;
     @apply bg-white border-gray-300;
     @apply dark:bg-gray-700 dark:border-gray-600;
   }
