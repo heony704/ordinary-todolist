@@ -15,6 +15,10 @@ export default function Todo({
     setTodoValue(event.target.value);
   };
 
+  const toggle = () => {
+    updateTodo(id, todo, !isCompleted);
+  };
+
   const cancelEdit = () => {
     setEditMode(false);
     setTodoValue(todo);
@@ -30,7 +34,13 @@ export default function Todo({
   if (!editMode) {
     return (
       <div className={`${isCompleted && 'toggled'} todo todo-white`}>
-        <pre className="truncate flex-1 whitespace-pre-wrap">{todo}</pre>
+        <pre
+          className="truncate flex-1 px-1 whitespace-pre-wrap cursor-pointer"
+          role="presentation"
+          onClick={toggle}
+        >
+          {todo}
+        </pre>
         <button
           type="button"
           className="icon-button"
@@ -51,7 +61,9 @@ export default function Todo({
   return (
     <div className={`${isCompleted && 'toggled'} todo todo-white`}>
       <textarea
-        className="flex-1 rounded-sm px-1 mr-1 resize-none dark:bg-gray-600 focus:outline-none"
+        className={`${
+          isCompleted && 'dark:text-gray-400'
+        } flex-1 rounded-sm px-1 mr-1 bg-gray-100 dark:bg-gray-600`}
         value={todoValue}
         onChange={handleTodoValueChange}
       >
