@@ -5,7 +5,7 @@ import { removeToken } from 'src/utils/token';
 import TodoList from 'src/components/TodoList';
 import TodoInput from 'src/components/TodoInput';
 
-export default function TodoListPage() {
+export default function TodolistPage() {
   useAuthRouting();
 
   const navigate = useNavigate();
