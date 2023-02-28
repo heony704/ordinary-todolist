@@ -1,7 +1,10 @@
 /// <reference types="react-scripts" />
 
 type Todo = {
-  contents: string;
+  id: number;
+  todo: string;
+  isCompleted: boolean;
+  userId: number;
 };
 
 type HTMLInputTypeAttribute =
