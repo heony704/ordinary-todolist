@@ -1,19 +1,16 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import TodoListPage from './pages/TodoListPage';
-import AuthPage from './pages/AuthPage';
-import LoginForm from './components/LoginForm';
-import RegisterForm from './components/RegisterForm';
+import TodolistPage from './pages/TodolistPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<TodoListPage />} />
-        <Route element={<AuthPage />}>
-          <Route path="/login" element={<LoginForm />} />
-          <Route path="/register" element={<RegisterForm />} />
-        </Route>
+        <Route path="/" element={<TodolistPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
       </Routes>
     </BrowserRouter>
   );

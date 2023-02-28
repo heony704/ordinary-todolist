@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import useAuthRouting from 'src/hooks/useAuthRouting';
+import Logo from 'src/components/Logo';
+import { HiOutlineChevronDown } from 'react-icons/hi';
+import Todo from 'src/components/Todo';
 import { removeToken } from 'src/utils/token';
-import TodoList from 'src/components/TodoList';
-import TodoInput from 'src/components/TodoInput';
 
-export default function TodoListPage() {
+export default function TodolistPage() {
   useAuthRouting();
 
   const navigate = useNavigate();
@@ -15,14 +16,9 @@ export default function TodoListPage() {
   };
 
   return (
-    <div className="flex flex-col items-center px-6 pt-6 pb-10 max-w-3xl mx-auto">
+    <div className="flex flex-col items-center px-6 pt-6 max-w-3xl mx-auto">
       <div className="flex justify-between items-center w-full">
-        <Link
-          to="/"
-          className="flex items-center text-2xl font-semibold text-black select-none"
-        >
-          Todolist
-        </Link>
+        <Logo />
         <button
           type="button"
           className="button-rounded-sm button-gray"
@@ -31,8 +27,23 @@ export default function TodoListPage() {
           Logout
         </button>
       </div>
-      <TodoInput />
-      <TodoList />
+      <div className="relative w-full mt-6">
+        <input
+          className="block p-2.5 pr-[3.3rem] w-full text-sm input-rounded input-white"
+          placeholder="Input todos..."
+        />
+        <button
+          type="submit"
+          className="absolute top-0 right-0 p-2.5 text-sm font-medium rounded-r-lg button-primary border border-primary-600"
+        >
+          <HiOutlineChevronDown className="w-5 h-5" />
+        </button>
+      </div>
+      <div className="w-full mt-10 space-y-6">
+        <Todo contents="todo 1" />
+        <Todo contents="todo 2" />
+        <Todo contents="todo 3" />
+      </div>
     </div>
   );
 }
