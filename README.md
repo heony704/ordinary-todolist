@@ -1,46 +1,88 @@
-# Getting Started with Create React App
+# 평범한 투두리스트
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+할일을 체크할 수 있는 평범한 투두리스트 웹 어플리케이션입니다. 로그인한 사용자는 본인만의 투두리스트에 접근할 수 있습니다.
 
-## Available Scripts
+> [배포링크: ordinary-todolist.netlify.app](https://ordinary-todolist.netlify.app)
 
-In the project directory, you can run:
+## 기능
 
-### `yarn start`
+### 인증 및 인가
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [x] 사용자는 로그인할 때, 이메일과 비밀번호를 통해 인증
+- [x] 인증된(토큰이 부여된) 사용자만이 본인의 투두리스트에 접근 가능
+- [x] 인증되지 않은 사용자가 투두리스트에 접근 시 로그인 페이지로 리다이렉트
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 할일 관리
 
-### `yarn test`
+- [x] 할일을 입력해 투두리스트에 투두 생성
+- [x] 해결된 할일은 클릭하여 해결 표시
+- [x] 할일 수정, 삭제 가능
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 사용된 기술
 
-### `yarn build`
+- `React v18`
+- `TypeScript`
+- `React Router v6`
+- `Axios`
+- `TailwindCSS`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 프로젝트 구조
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+src
+ ┣ api
+ ┃ ┣ auth.ts
+ ┃ ┗ todo.ts
+ ┣ components
+ ┃ ┣ Alert.tsx
+ ┃ ┣ Form.tsx
+ ┃ ┣ LoginForm.tsx
+ ┃ ┣ RegisterForm.tsx
+ ┃ ┣ Todo.tsx
+ ┃ ┣ TodoInput.tsx
+ ┃ ┗ TodoList.tsx
+ ┣ hooks
+ ┃ ┣ useAlert.tsx
+ ┃ ┣ useAuthRouting.ts
+ ┃ ┗ useFormState.ts
+ ┣ pages
+ ┃ ┣ AuthPage.tsx
+ ┃ ┗ TodolistPage.tsx
+ ┣ utils
+ ┃ ┣ token.ts
+ ┃ ┗ validate.ts
+ ┣ App.tsx
+ ┣ index.css
+ ┣ index.tsx
+ ┗ react-app-env.d.ts
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `api`: API 호출 관련 함수
+- `components`: 컴포넌트
+- `hooks`: 커스텀 훅
+- `pages`: 컴포넌트를 조합해서 만든 페이지
+- `utils`: API 관련 함수, 커스텀 훅이 아닌 공통적으로 사용되는 함수
+- `react-app-env.d.ts`: 전역으로 사용되는 타입
 
-### `yarn eject`
+## 직접 실행하는 방법
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+해당 프로젝트를 clone해서 로컬 환경에서 직접 실행할 수 있습니다.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 1. 프로젝트 복제
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+git clone https://github.com/heony704/ordinary-todolist.git
+cd ordinary-todolist
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### 2. 프로젝트에 필요한 라이브러리 설치
 
-## Learn More
+```bash
+yarn
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 3. 로컬 환경에서 평범한 투두리스트 실행
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+yarn start
+```
