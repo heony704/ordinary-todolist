@@ -3,9 +3,9 @@ import { useState } from 'react';
 type InputChangeEvent = React.ChangeEvent<HTMLInputElement>;
 type InputChangeHandler = (event: InputChangeEvent) => void;
 
-const useFormState = <T>(
+export default function useFormState<T>(
   initialValue: T,
-): [T, InputChangeHandler, () => void] => {
+): [T, InputChangeHandler, () => void] {
   const [formState, setFormState] = useState(initialValue);
 
   function handleInputChange(event: InputChangeEvent) {
@@ -18,6 +18,4 @@ const useFormState = <T>(
   }
 
   return [formState, handleInputChange, resetForm];
-};
-
-export default useFormState;
+}
