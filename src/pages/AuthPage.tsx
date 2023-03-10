@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import useAuthRouting from 'src/hooks/useAuthRouting';
 
-export default function AuthLayout() {
+export default function AuthPage() {
   useAuthRouting();
 
   return (

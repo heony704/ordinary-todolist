@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import useAuthRouting from 'src/hooks/useAuthRouting';
-import { removeToken } from 'src/utils/token';
+import { removeToken } from 'src/utils/accessToken';
 import TodoList from 'src/components/TodoList';
 import TodoInput from 'src/components/TodoInput';
 

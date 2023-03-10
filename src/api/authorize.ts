@@ -1,4 +1,4 @@
-import { fetchInstance } from './fetchInstance';
+import { fetchInstance } from 'src/api/fetchInstance';
 
 export const login = async (email: string, password: string) => {
   try {

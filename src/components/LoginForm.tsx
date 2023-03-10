@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import Form from 'src/components/Form';
 import useFormState from 'src/hooks/useFormState';
 import useAlert from 'src/hooks/useAlert';
-import { login } from 'src/api/auth';
+import { login } from 'src/api/authorize';
 import { isEmailValid, isPasswordValid } from 'src/utils/validate';
-import { saveToken } from 'src/utils/token';
+import { saveToken } from 'src/utils/accessToken';
 
 export default function LoginForm() {
   const [loginForm, handleInputChange, resetForm] = useFormState({

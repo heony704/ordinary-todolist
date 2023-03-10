@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createTodo } from 'src/api/todo';
+import { createTodo } from 'src/api/handleTodo';
 import { HiOutlineChevronDown } from 'react-icons/hi';
 
 export default function TodoInput() {

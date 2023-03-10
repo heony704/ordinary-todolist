@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getToken } from 'src/utils/token';
+import { getToken } from 'src/utils/accessToken';
 
 const BASE_URL = 'https://pre-onboarding-selection-task.shop';
 

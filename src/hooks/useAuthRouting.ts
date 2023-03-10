@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { getToken } from 'src/utils/token';
+import { getToken } from 'src/utils/accessToken';
 
 export default function useAuthRouting() {
   const navigate = useNavigate();

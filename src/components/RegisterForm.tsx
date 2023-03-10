@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Form from 'src/components/Form';
 import useFormState from 'src/hooks/useFormState';
 import useAlert from 'src/hooks/useAlert';
-import { register } from 'src/api/auth';
+import { register } from 'src/api/authorize';
 import {
   isEmailValid,
   isPasswordValid,

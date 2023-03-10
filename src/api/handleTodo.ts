@@ -1,4 +1,4 @@
-import { fetchInstanceWithToken } from './fetchInstance';
+import { fetchInstanceWithToken } from 'src/api/fetchInstance';
 
 export const createTodo = async (todo: string) => {
   try {
