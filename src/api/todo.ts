@@ -1,20 +1,8 @@
-import axios from 'axios';
-import { getToken } from 'src/utils/token';
-
-const BASE_URL = 'https://pre-onboarding-selection-task.shop';
-const authToken = `Bearer ${getToken()}`;
-
-const todoAxios = axios.create({
-  baseURL: BASE_URL,
-  headers: {
-    'Content-Type': 'application/json',
-    Authorization: authToken,
-  },
-});
+import { fetchInstanceWithToken } from './fetchInstance';
 
 export const createTodo = async (todo: string) => {
   try {
-    const response = await todoAxios.post('/todos', { todo });
+    const response = await fetchInstanceWithToken.post('/todos', { todo });
     return response.data;
   } catch (error) {
     return Promise.reject(error);
@@ -23,7 +11,7 @@ export const createTodo = async (todo: string) => {
 
 export const getTodos = async () => {
   try {
-    const response = await todoAxios.get('/todos');
+    const response = await fetchInstanceWithToken.get('/todos');
     return response.data;
   } catch (error) {
     return Promise.reject(error);
@@ -36,7 +24,10 @@ export const updateTodo = async (
   isCompleted: boolean,
 ) => {
   try {
-    const response = await todoAxios.put(`/todos/${id}`, { todo, isCompleted });
+    const response = await fetchInstanceWithToken.put(`/todos/${id}`, {
+      todo,
+      isCompleted,
+    });
     return response.data;
   } catch (error) {
     return Promise.reject(error);
@@ -45,7 +36,7 @@ export const updateTodo = async (
 
 export const deleteTodo = async (id: number) => {
   try {
-    const response = await todoAxios.delete(`/todos/${id}`);
+    const response = await fetchInstanceWithToken.delete(`/todos/${id}`);
     return response.data;
   } catch (error) {
     return Promise.reject(error);
