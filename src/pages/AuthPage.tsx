@@ -1,10 +1,7 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import useAuthRouting from 'src/hooks/useAuthRouting';
 
 export default function AuthPage() {
-  useAuthRouting();
-
   return (
     <div className="flex flex-col items-center justify-center px-6 py-8 space-y-6 mx-auto md:h-screen lg:py-0">
       <Link

@@ -1,20 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import Todo from 'src/components/Todo';
 import { getTodos } from 'src/api/handleTodo';
-import { getToken } from 'src/utils/accessToken';
 
 export default function TodoList() {
   const [todoList, setTodoList] = useState<Todo[]>([]);
 
-  const navigate = useNavigate();
-
   useEffect(() => {
-    if (!getToken()) {
-      navigate('/login');
-      return;
-    }
-
     async function fetchTodoList() {
       setTodoList(await getTodos());
     }
