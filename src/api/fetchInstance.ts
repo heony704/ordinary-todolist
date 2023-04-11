@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getToken } from 'src/utils/accessToken';
 
-const BASE_URL = 'https://pre-onboarding-selection-task.shop';
+const BASE_URL = 'http://43.201.130.34:8000';
 
 const fetchInstance = axios.create({
   baseURL: BASE_URL,
