@@ -3,7 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { createTodo } from 'src/api/handleTodo';
 import { HiOutlineChevronDown } from 'react-icons/hi';
 
-export default function TodoInput() {
+type TodoInputComponent = {
+  rerender: () => void;
+};
+
+function TodoInput({ rerender }: TodoInputComponent) {
   const [newTodo, setNewTodo] = useState('');
   const handleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewTodo(event.target.value);
@@ -16,6 +20,7 @@ export default function TodoInput() {
     try {
       await createTodo(newTodo);
       setNewTodo('');
+      rerender();
     } catch (error) {
       navigate('/login');
     }
@@ -38,3 +43,5 @@ export default function TodoInput() {
     </form>
   );
 }
+
+export default React.memo(TodoInput);

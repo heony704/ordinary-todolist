@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LogoutButton from 'src/components/LogoutButton';
-import TodoList from 'src/components/TodoList';
-import TodoInput from 'src/components/TodoInput';
+import TodoRerender from 'src/components/TodoRerender';
 
 export default function TodolistPage() {
   return (
@@ -16,8 +15,7 @@ export default function TodolistPage() {
         </Link>
         <LogoutButton />
       </div>
-      <TodoInput />
-      <TodoList />
+      <TodoRerender />
     </div>
   );
 }

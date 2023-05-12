@@ -2,7 +2,15 @@ import React, { useState, useEffect } from 'react';
 import Todo from 'src/components/Todo';
 import { getTodos } from 'src/api/handleTodo';
 
-export default function TodoList() {
+type TodoListComponent = {
+  rerenderFlag: boolean;
+  rerender: () => void;
+};
+
+export default function TodoList({
+  rerenderFlag,
+  rerender,
+}: TodoListComponent) {
   const [todoList, setTodoList] = useState<Todo[]>([]);
 
   useEffect(() => {
@@ -10,7 +18,7 @@ export default function TodoList() {
       setTodoList(await getTodos());
     }
     fetchTodoList();
-  });
+  }, [rerenderFlag]);
 
   return (
     <div className="w-full mt-10 space-y-6">
@@ -23,6 +31,7 @@ export default function TodoList() {
             id={todo.id}
             todo={todo.todo}
             isCompleted={todo.isCompleted}
+            rerenderTodoList={rerender}
           />
         ))}
     </div>

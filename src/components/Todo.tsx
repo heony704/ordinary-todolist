@@ -2,11 +2,19 @@ import React, { useState } from 'react';
 import { HiX, HiPencil, HiTrash, HiCheck } from 'react-icons/hi';
 import { deleteTodo, updateTodo } from 'src/api/handleTodo';
 
+type TodoComponent = {
+  id: number;
+  todo: string;
+  isCompleted: boolean;
+  rerenderTodoList?: () => void;
+};
+
 export default function Todo({
   id,
   todo,
   isCompleted,
-}: Pick<Todo, 'id' | 'todo' | 'isCompleted'>) {
+  rerenderTodoList = () => {},
+}: TodoComponent) {
   const [editMode, setEditMode] = useState(false);
   const [todoValue, setTodoValue] = useState(todo);
   const handleTodoValueChange = (
@@ -15,20 +23,29 @@ export default function Todo({
     setTodoValue(event.target.value);
   };
 
-  const toggle = () => {
-    updateTodo(id, todo, !isCompleted);
+  const toggle = async () => {
+    await updateTodo(id, todo, !isCompleted);
+    rerenderTodoList();
   };
 
-  const cancelEdit = () => {
+  const cancelEdit = async () => {
     setEditMode(false);
     setTodoValue(todo);
   };
 
   const editTodo = async () => {
     const trimmedValue = todoValue.trim();
-    await updateTodo(id, trimmedValue, isCompleted);
+    if (trimmedValue !== todo) {
+      await updateTodo(id, trimmedValue, isCompleted);
+      rerenderTodoList();
+    }
     setEditMode(false);
     setTodoValue(trimmedValue);
+  };
+
+  const removeTodo = async () => {
+    await deleteTodo(id);
+    rerenderTodoList();
   };
 
   if (!editMode) {
@@ -48,11 +65,7 @@ export default function Todo({
         >
           <HiPencil />
         </button>
-        <button
-          type="button"
-          className="icon-button"
-          onClick={() => deleteTodo(id)}
-        >
+        <button type="button" className="icon-button" onClick={removeTodo}>
           <HiTrash />
         </button>
       </div>
