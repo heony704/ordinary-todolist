@@ -2,8 +2,7 @@ import React, { useState, useCallback } from 'react';
 import TodoList from 'src/components/TodoList';
 import TodoInput from 'src/components/TodoInput';
 
-// export default function TodoRerender() {
-function TodoRerender() {
+export default function TodoRerender() {
   const [rerenderFlag, setRerenderFlag] = useState(false);
   const rerender = useCallback(() => {
     setRerenderFlag(prevRerenderFlag => !prevRerenderFlag);
@@ -16,5 +15,3 @@ function TodoRerender() {
     </>
   );
 }
-
-export default React.memo(TodoRerender);
