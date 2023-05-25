@@ -1,17 +1,22 @@
-import React from 'react';
-import { Navigate, useLocation, Outlet } from 'react-router-dom';
-import { getToken } from 'src/utils/accessToken';
+import React, { useEffect } from 'react';
+import { useNavigate, useLocation, Outlet } from 'react-router-dom';
+import { getTodos } from 'src/api/handleTodo';
 
 export default function Authorization() {
   const location = useLocation();
+  const navigate = useNavigate();
 
-  if (location.pathname === '/' && !getToken()) {
-    return <Navigate to="/login" />;
-  }
-
-  if (location.pathname !== '/' && getToken()) {
-    return <Navigate to="/" />;
-  }
+  useEffect(() => {
+    async function fetchTodoList() {
+      try {
+        await getTodos();
+        if (location.pathname !== '/') navigate('/');
+      } catch {
+        if (location.pathname === '/') navigate('/login');
+      }
+    }
+    fetchTodoList();
+  }, []);
 
   return <Outlet />;
 }
