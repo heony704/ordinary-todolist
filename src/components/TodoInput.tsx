@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useToast from 'src/hooks/useToast';
 import { createTodo } from 'src/api/handleTodo';
 import { HiOutlineChevronDown } from 'react-icons/hi';
 
@@ -13,10 +14,17 @@ function TodoInput({ rerender }: TodoInputComponent) {
     setNewTodo(event.target.value);
   };
 
+  const [Toast, toast] = useToast();
   const navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (newTodo.trim() === '') {
+      toast('빈 내용입니다. 내용을 입력해주세요.');
+      return;
+    }
+
     try {
       await createTodo(newTodo);
       setNewTodo('');
@@ -27,20 +35,23 @@ function TodoInput({ rerender }: TodoInputComponent) {
   };
 
   return (
-    <form className="relative w-full mt-6" onSubmit={handleSubmit}>
-      <input
-        className="block p-2.5 pr-[3.3rem] w-full text-sm input-rounded input-white"
-        placeholder="Input todos..."
-        value={newTodo}
-        onChange={handleChangeInput}
-      />
-      <button
-        type="submit"
-        className="absolute top-0 right-0 p-2.5 text-sm font-medium rounded-r-lg button-primary border border-primary-600"
-      >
-        <HiOutlineChevronDown className="w-5 h-5" />
-      </button>
-    </form>
+    <>
+      <Toast />
+      <form className="relative w-full mt-6" onSubmit={handleSubmit}>
+        <input
+          className="block p-2.5 pr-[3.3rem] w-full text-sm input-rounded input-white"
+          placeholder="Input todos..."
+          value={newTodo}
+          onChange={handleChangeInput}
+        />
+        <button
+          type="submit"
+          className="absolute top-0 right-0 p-2.5 text-sm font-medium rounded-r-lg button-primary border border-primary-600"
+        >
+          <HiOutlineChevronDown className="w-5 h-5" />
+        </button>
+      </form>
+    </>
   );
 }
 
