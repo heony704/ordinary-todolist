@@ -123,6 +123,6 @@ function FormHelper({
   );
 }
 
-Form.Input = FormInput;
-Form.Button = FormButton;
-Form.Helper = FormHelper;
+Form.Input = React.memo(FormInput);
+Form.Button = React.memo(FormButton);
+Form.Helper = React.memo(FormHelper);
