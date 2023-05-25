@@ -12,28 +12,41 @@ export default function TodoList({
   rerender,
 }: TodoListComponent) {
   const [todoList, setTodoList] = useState<Todo[]>([]);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     async function fetchTodoList() {
-      setTodoList(await getTodos());
+      try {
+        setTodoList(await getTodos());
+      } catch {
+        setError(true);
+      }
     }
     fetchTodoList();
   }, [rerenderFlag]);
 
   return (
     <div className="w-full mt-10 space-y-6">
-      {todoList
-        .slice(0)
-        .reverse()
-        .map(todo => (
-          <Todo
-            key={todo.id}
-            id={todo.id}
-            todo={todo.todo}
-            isCompleted={todo.isCompleted}
-            rerenderTodoList={rerender}
-          />
-        ))}
+      {error ? (
+        <div className="flex w-full justify-center text-center text-black leading-10">
+          오류로 인해 TodoList를 가져올 수 없습니다.
+          <br />
+          다시 시도해주세요.
+        </div>
+      ) : (
+        todoList
+          .slice(0)
+          .reverse()
+          .map(todo => (
+            <Todo
+              key={todo.id}
+              id={todo.id}
+              todo={todo.todo}
+              isCompleted={todo.isCompleted}
+              rerenderTodoList={rerender}
+            />
+          ))
+      )}
     </div>
   );
 }

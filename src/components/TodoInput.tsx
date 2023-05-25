@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import useToast from 'src/hooks/useToast';
 import { createTodo } from 'src/api/handleTodo';
 import { HiOutlineChevronDown } from 'react-icons/hi';
@@ -15,7 +14,6 @@ function TodoInput({ rerender }: TodoInputComponent) {
   };
 
   const [Toast, toast] = useToast();
-  const navigate = useNavigate();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -30,7 +28,8 @@ function TodoInput({ rerender }: TodoInputComponent) {
       setNewTodo('');
       rerender();
     } catch (error) {
-      navigate('/login');
+      toast('오류가 발생했습니다. 다시 시도해주세요.');
+      setTimeout(() => window.location.reload(), 1500);
     }
   };
 
