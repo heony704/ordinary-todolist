@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Todo from 'src/components/Todo';
+import Spinner from 'src/components/Spinner';
 import { getTodos } from 'src/api/handleTodo';
 
 type TodoListComponent = {
@@ -12,18 +13,28 @@ export default function TodoList({
   rerender,
 }: TodoListComponent) {
   const [todoList, setTodoList] = useState<Todo[]>([]);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    async function fetchTodoList() {
-      try {
-        setTodoList(await getTodos());
-      } catch {
+    getTodos()
+      .then(data => {
+        setTodoList(data);
+      })
+      .catch(() => {
         setError(true);
-      }
-    }
-    fetchTodoList();
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, [rerenderFlag]);
+
+  if (loading)
+    return (
+      <div className="flex justify-center items-center w-full mt-16">
+        <Spinner />
+      </div>
+    );
 
   return (
     <div className="w-full mt-10 space-y-6">
