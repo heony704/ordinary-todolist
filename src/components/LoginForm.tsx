@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import Form from 'src/components/Form';
 import useFormState from 'src/hooks/useFormState';
 import useAlert from 'src/hooks/useAlert';
@@ -14,13 +13,12 @@ export default function LoginForm() {
   });
 
   const [Alert, alert] = useAlert();
-  const navigate = useNavigate();
 
   const handleSubmit = async () => {
     try {
       const response = await login(loginForm.email, loginForm.password);
       saveToken(response.access_token);
-      navigate('/');
+      window.location.reload();
     } catch (error) {
       alert(
         '로그인 실패',

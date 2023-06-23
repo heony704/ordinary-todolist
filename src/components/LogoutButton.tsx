@@ -1,12 +1,10 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { removeToken } from 'src/utils/accessToken';
 
 export default function LogoutButton() {
-  const navigate = useNavigate();
   const logout = () => {
     removeToken();
-    navigate('/login');
+    window.location.reload();
   };
 
   return (
