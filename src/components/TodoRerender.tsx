@@ -1,6 +1,7 @@
-import React, { useState, useCallback } from 'react';
-import TodoList from 'src/components/TodoList';
+import React, { useCallback, useState } from 'react';
+
 import TodoInput from 'src/components/TodoInput';
+import TodoList from 'src/components/TodoList';
 
 export default function TodoRerender() {
   const [rerenderFlag, setRerenderFlag] = useState(false);

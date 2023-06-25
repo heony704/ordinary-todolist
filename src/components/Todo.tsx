@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { HiX, HiPencil, HiTrash, HiCheck } from 'react-icons/hi';
-import { deleteTodo, updateTodo } from 'src/api/handleTodo';
+import { HiCheck, HiPencil, HiTrash, HiX } from 'react-icons/hi';
+
 import useToast from 'src/hooks/useToast';
+
+import { deleteTodo, updateTodo } from 'src/api/handleTodo';
 
 type TodoComponent = {
   id: number;

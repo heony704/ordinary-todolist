@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { removeToken } from 'src/utils/accessToken';
 
 export default function LogoutButton() {

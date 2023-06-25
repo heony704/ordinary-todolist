@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Navigate, useLocation, Outlet } from 'react-router-dom';
-import Spinner from 'src/components/Spinner';
+import React, { useEffect, useState } from 'react';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
+
 import { getTodos } from 'src/api/handleTodo';
+
+import Spinner from 'src/components/Spinner';
 
 export default function Authorization() {
   const [loading, setLoading] = useState(true);

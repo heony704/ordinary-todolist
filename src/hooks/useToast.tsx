@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import Toast from 'src/components/Toast';
 
 export default function useToast(): [

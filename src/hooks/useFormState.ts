@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useCallback, useState } from 'react';
 
 type InputChangeEvent = React.ChangeEvent<HTMLInputElement>;
 type InputChangeHandler = (event: InputChangeEvent) => void;

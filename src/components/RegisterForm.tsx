@@ -1,14 +1,17 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Form from 'src/components/Form';
-import useFormState from 'src/hooks/useFormState';
+
 import useAlert from 'src/hooks/useAlert';
+import useFormState from 'src/hooks/useFormState';
+
 import { register } from 'src/api/authorize';
 import {
   isEmailValid,
-  isPasswordValid,
   isPasswordMatch,
+  isPasswordValid,
 } from 'src/utils/validate';
+
+import Form from 'src/components/Form';
 
 export default function RegisterForm() {
   const [registerForm, handleInputChange, resetForm] = useFormState({

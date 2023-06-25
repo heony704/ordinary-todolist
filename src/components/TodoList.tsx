@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import Todo from 'src/components/Todo';
-import Spinner from 'src/components/Spinner';
+import React, { useEffect, useState } from 'react';
+
 import { getTodos } from 'src/api/handleTodo';
+
+import Spinner from 'src/components/Spinner';
+import Todo from 'src/components/Todo';
 
 type TodoListComponent = {
   rerenderFlag: boolean;

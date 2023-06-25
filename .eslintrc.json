@@ -18,12 +18,68 @@
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
-  "plugins": ["react", "@typescript-eslint"],
+  "plugins": ["react", "@typescript-eslint", "import"],
   "rules": {
     "react/require-default-props": [
       2,
       {
         "functions": "defaultArguments"
+      }
+    ],
+    "sort-imports": [
+      "error",
+      {
+        "ignoreCase": true,
+        "ignoreDeclarationSort": true,
+        "ignoreMemberSort": false,
+        "allowSeparatedGroups": true
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        "newlines-between": "always",
+        "groups": [
+          ["builtin", "external"],
+          "internal",
+          "parent",
+          "sibling",
+          "index"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "builtin"
+          },
+          {
+            "pattern": "src/api/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "src/utils/**",
+            "group": "internal"
+          },
+          {
+            "pattern": "src/hooks/**",
+            "group": "internal",
+            "position": "before"
+          },
+          {
+            "pattern": "src/pages/**",
+            "group": "internal",
+            "position": "after"
+          },
+          {
+            "pattern": "src/components/**",
+            "group": "internal",
+            "position": "after"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["src/**"],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
       }
     ]
   },

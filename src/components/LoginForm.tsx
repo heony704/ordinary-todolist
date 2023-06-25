@@ -1,10 +1,13 @@
 import React from 'react';
-import Form from 'src/components/Form';
-import useFormState from 'src/hooks/useFormState';
+
 import useAlert from 'src/hooks/useAlert';
+import useFormState from 'src/hooks/useFormState';
+
 import { login } from 'src/api/authorize';
-import { isEmailValid, isPasswordValid } from 'src/utils/validate';
 import { saveToken } from 'src/utils/accessToken';
+import { isEmailValid, isPasswordValid } from 'src/utils/validate';
+
+import Form from 'src/components/Form';
 
 export default function LoginForm() {
   const [loginForm, handleInputChange, resetForm] = useFormState({

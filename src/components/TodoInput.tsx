@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import useToast from 'src/hooks/useToast';
-import { createTodo } from 'src/api/handleTodo';
 import { HiOutlineChevronDown } from 'react-icons/hi';
+
+import useToast from 'src/hooks/useToast';
+
+import { createTodo } from 'src/api/handleTodo';
 
 type TodoInputComponent = {
   rerender: () => void;

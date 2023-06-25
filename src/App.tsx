@@ -1,8 +1,10 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Authorization from 'src/components/Authorization';
-import TodolistPage from 'src/pages/TodolistPage';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 import AuthPage from 'src/pages/AuthPage';
+import TodolistPage from 'src/pages/TodolistPage';
+
+import Authorization from 'src/components/Authorization';
 import LoginForm from 'src/components/LoginForm';
 import RegisterForm from 'src/components/RegisterForm';
 
