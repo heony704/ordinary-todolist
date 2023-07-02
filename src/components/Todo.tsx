@@ -130,47 +130,4 @@ export default function Todo({
       </div>
     </>
   );
-
-  // if (!editMode) {
-  //   return (
-  //     <div className={`${isCompleted && 'toggled'} todo todo-white`}>
-  //       <pre
-  //         className="truncate flex-1 px-1 whitespace-pre-wrap cursor-pointer"
-  //         role="presentation"
-  //         onClick={toggle}
-  //       >
-  //         {todo}
-  //       </pre>
-  //       <button
-  //         type="button"
-  //         className="icon-button"
-  //         onClick={() => setEditMode(true)}
-  //       >
-  //         <HiPencil />
-  //       </button>
-  //       <button type="button" className="icon-button" onClick={removeTodo}>
-  //         <HiTrash />
-  //       </button>
-  //     </div>
-  //   );
-  // }
-  // return (
-  //   <div className={`${isCompleted && 'toggled'} todo todo-white`}>
-  //     <textarea
-  //       className={`${
-  //         isCompleted && 'dark:text-gray-400'
-  //       } flex-1 rounded-sm px-1 mr-1 bg-gray-100 dark:bg-gray-600`}
-  //       value={todoValue}
-  //       onChange={handleTodoValueChange}
-  //     >
-  //       {todo}
-  //     </textarea>
-  //     <button type="button" className="icon-button" onClick={editTodo}>
-  //       <HiCheck />
-  //     </button>
-  //     <button type="button" className="icon-button" onClick={cancelEdit}>
-  //       <HiX />
-  //     </button>
-  //   </div>
-  // );
 }
