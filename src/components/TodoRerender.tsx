@@ -10,9 +10,9 @@ export default function TodoRerender() {
   }, []);
 
   return (
-    <>
+    <main className="w-full flex flex-col">
       <TodoInput rerender={rerender} />
       <TodoList rerenderFlag={rerenderFlag} rerender={rerender} />
-    </>
+    </main>
   );
 }
