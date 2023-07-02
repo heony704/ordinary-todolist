@@ -48,6 +48,7 @@ function TodoInput({ rerender }: TodoInputComponent) {
         <button
           type="submit"
           className="absolute top-0 right-0 p-2.5 text-sm font-medium rounded-r-lg button-primary border border-primary-600"
+          aria-label="submit"
         >
           <HiOutlineChevronDown className="w-5 h-5" />
         </button>

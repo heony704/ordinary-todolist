@@ -83,10 +83,20 @@ export default function Todo({
             >
               {todo}
             </textarea>
-            <button type="button" className="icon-button" onClick={editTodo}>
+            <button
+              type="button"
+              className="icon-button"
+              onClick={editTodo}
+              aria-label="confirm"
+            >
               <HiCheck />
             </button>
-            <button type="button" className="icon-button" onClick={cancelEdit}>
+            <button
+              type="button"
+              className="icon-button"
+              onClick={cancelEdit}
+              aria-label="cancel"
+            >
               <HiX />
             </button>
           </>
@@ -103,10 +113,16 @@ export default function Todo({
               type="button"
               className="icon-button"
               onClick={() => setEditMode(true)}
+              aria-label="edit"
             >
               <HiPencil />
             </button>
-            <button type="button" className="icon-button" onClick={removeTodo}>
+            <button
+              type="button"
+              className="icon-button"
+              onClick={removeTodo}
+              aria-label="delete"
+            >
               <HiTrash />
             </button>
           </>
