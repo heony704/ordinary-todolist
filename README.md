@@ -1,37 +1,87 @@
-# 평범한 투두리스트
+<h1 align=center>평범한 투두리스트</h1>
 
-![todolist_main](https://github.com/heony704/ordinary-todolist/assets/36994104/c388c89d-e672-44ca-b1e3-ce6045933460)
+<div align=center>
+  <img src="https://img.shields.io/badge/React v18-61DAFB?style=flat&logo=react&logoColor=black">
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white">
+  <img src="https://img.shields.io/badge/React Router v6-CA4245?style=flat&logo=reactrouter&logoColor=white">
+  <img src="https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=axios&logoColor=white">
+  <img src="https://img.shields.io/badge/Tailwind CSS-06B6D4?style=flat&logo=tailwindcss&logoColor=white">
+</div>
+<br>
 
-할일을 체크할 수 있는 평범한 투두리스트 웹 어플리케이션입니다.  
+<div align=center>
+  <img src="https://github.com/heony704/ordinary-todolist/assets/36994104/c388c89d-e672-44ca-b1e3-ce6045933460" width=600>
+</div>
+<br>
+
+<div align=center>
+할일을 체크할 수 있는 평범한 투두리스트 웹 어플리케이션입니다.<br>
 로그인한 사용자는 본인만의 투두리스트에 접근할 수 있습니다.
+</div>
+<br>
 
-> [배포링크: ordinary-todolist.netlify.app](https://ordinary-todolist.netlify.app)
-
-## 사용된 기술
-
-- `React v18`
-- `TypeScript`
-- `React Router v6`
-- `Axios`
-- `TailwindCSS`
+<div align=center>
+  <a style="background:#2563eb; color:white;  padding:4px 8px; border-radius:8px" href="https://ordinary-todolist.netlify.app">평범한 투두리스트 사용해보기</a>
+</div>
 
 ## 기능
 
-![todolist_login](https://github.com/heony704/ordinary-todolist/assets/36994104/ba498f9e-aef3-4649-ac09-44ca806cc619)
-
 ### 인증 및 인가
+
+<div align=center>
+  <img src="https://github.com/heony704/ordinary-todolist/assets/36994104/ba498f9e-aef3-4649-ac09-44ca806cc619" width=600>
+</div>
 
 - [x] 사용자는 로그인할 때, 이메일과 비밀번호를 통해 인증
 - [x] 인증된(토큰이 부여된) 사용자만이 본인의 투두리스트에 접근 가능
 - [x] 인증되지 않은 사용자가 투두리스트에 접근 시 로그인 페이지로 리다이렉트
 
-![todolist_crud](https://github.com/heony704/ordinary-todolist/assets/36994104/53e6a133-0a61-4ed0-bf96-fd5af4656b71)
-
 ### 할일 관리
+
+<div align=center>
+  <img src="https://github.com/heony704/ordinary-todolist/assets/36994104/53e6a133-0a61-4ed0-bf96-fd5af4656b71" width=600>
+</div>
 
 - [x] 할일을 입력해 투두리스트에 투두 생성
 - [x] 해결된 할일은 클릭하여 해결 표시
 - [x] 할일 수정, 삭제 가능
+
+## 프로젝트 구조
+
+```c
+src
+ ┣ api
+ ┃ ┣ authorize.ts // 사용자 인증 함수
+ ┃ ┣ fetchInstance.ts // 기본 설정된 axios 인스턴스 제공 함수
+ ┃ ┗ handleTodo.ts // Todo CRUD 함수
+ ┣ components
+ ┃ ┣ Alert.tsx
+ ┃ ┣ Authorization.tsx // 로그인 여부에 따라 navigate해주는 컴포넌트
+ ┃ ┣ Form.tsx
+ ┃ ┣ LoginForm.tsx
+ ┃ ┣ LogoutButton.tsx
+ ┃ ┣ RegisterForm.tsx
+ ┃ ┣ Spinner.tsx
+ ┃ ┣ Toast.tsx
+ ┃ ┣ Todo.tsx
+ ┃ ┣ TodoInput.tsx
+ ┃ ┣ TodoList.tsx
+ ┃ ┗ TodoRerender.tsx // 투두리스트의 리렌더링 타이밍을 관리하는 컴포넌트
+ ┣ hooks
+ ┃ ┣ useAlert.tsx // Alert 컴포넌트를 사용하는 훅
+ ┃ ┣ useFormState.ts // 폼 입력값들을 상태로 관리하는 훅
+ ┃ ┗ useToast.ts // Toast 컴포넌트를 사용하는 훅
+ ┣ pages
+ ┃ ┣ AuthPage.tsx // 인증 관련 페이지 레이아웃
+ ┃ ┗ TodolistPage.tsx // 투두리스트 페이지
+ ┣ utils
+ ┃ ┣ accessToken.ts // 사용자 인증 토큰을 다루는 함수
+ ┃ ┗ validate.ts // 폼 입력값이 유효한지 판단하는 함수
+ ┣ App.tsx
+ ┣ index.css
+ ┣ index.tsx
+ ┗ react-app-env.d.ts
+```
 
 ## 신경 쓴 부분
 
@@ -45,12 +95,14 @@
 
 Lighthouse 기준 웹 접근성 분야에서 97점을 달성했습니다.
 
-![todolist_web_accessibility](https://github.com/heony704/ordinary-todolist/assets/36994104/a854a799-0f6a-4f28-a9e3-1f81c28e673e)
+<div align=center>
+  <img src="https://github.com/heony704/ordinary-todolist/assets/36994104/a854a799-0f6a-4f28-a9e3-1f81c28e673e" width=500>
+</div>
 
 100점이 아니라 3점이 감점된 97점인 이유는 완료한 투두의 색상대비율이 낮기 때문입니다.  
 완료한 투두는 완료되지 않은 투두에 비해 눈에 덜 띄도록 의도적으로 색상대비율을 낮췄기 때문에 개선하지 않았습니다.
 
-### `useCallback`과 `React.memo`를 이용하여 렌더링 최적화
+### `useCallback`과 `React.memo`를 이용하여 컴포넌트 렌더링 최적화
 
 투두리스트가 리렌더링되는 순간을 최소화할 수 있도록 rerenderFlag 상태를 만들어 필요한 순간에만 리렌더링하도록 관리했습니다.  
 또, `useCallback`과 `React.memo`를 이용해 변하지 않은 컴포넌트는 불필요하게 렌더링되지 않도록 했습니다.
@@ -111,7 +163,9 @@ export default function TodoList({
 }
 ```
 
-![todolist_loading](https://github.com/heony704/ordinary-todolist/assets/36994104/52f71e88-08be-474e-8c1d-ece0a9b6d6c1)
+<div align=center>
+  <img src="https://github.com/heony704/ordinary-todolist/assets/36994104/52f71e88-08be-474e-8c1d-ece0a9b6d6c1" width=600>
+</div>
 
 ### API 요청 실패 시 Alert, Toast 등 사용자에게 적절한 UI를 표시하여 UX 개선
 
@@ -202,55 +256,12 @@ export default function TodoList({
 }
 ```
 
-### `tailwindcss`의 dark 클래스를 사용해 시스템 설정에 따라 다크모드가 적용되도록 UI 개선
+### AWS 서버 환경 구축하여 REST API 연동
 
-![todolist_darkmode](https://github.com/heony704/ordinary-todolist/assets/36994104/7a81b78a-16b0-40aa-b5ba-a8a6bd0b6951)
+AWS에 우분투 인스턴스를 만들어 투두리스트 데이터를 REST API로 받아올 수 있도록 했습니다.  
+HTTP 통신 설정같은 환경 구축은 직접 했으며 백엔드 서버는 오픈 소스코드를 이용했습니다.
 
-### REST API를 사용하기 위해 AWS 서버 구축
-
-## 프로젝트 구조
-
-```
-src
- ┣ api
- ┃ ┣ authorize.ts
- ┃ ┣ fetchInstance.ts
- ┃ ┗ handleTodo.ts
- ┣ components
- ┃ ┣ Alert.tsx
- ┃ ┣ Authorization.tsx
- ┃ ┣ Form.tsx
- ┃ ┣ LoginForm.tsx
- ┃ ┣ LogoutButton.tsx
- ┃ ┣ RegisterForm.tsx
- ┃ ┣ Spinner.tsx
- ┃ ┣ Toast.tsx
- ┃ ┣ Todo.tsx
- ┃ ┣ TodoInput.tsx
- ┃ ┣ TodoList.tsx
- ┃ ┗ TodoRerender.tsx
- ┣ hooks
- ┃ ┣ useAlert.tsx
- ┃ ┣ useFormState.ts
- ┃ ┗ useToast.ts
- ┣ pages
- ┃ ┣ AuthPage.tsx
- ┃ ┗ TodolistPage.tsx
- ┣ utils
- ┃ ┣ accessToken.ts
- ┃ ┗ validate.ts
- ┣ App.tsx
- ┣ index.css
- ┣ index.tsx
- ┗ react-app-env.d.ts
-```
-
-- `api`: API 호출 관련 함수
-- `components`: 컴포넌트
-- `hooks`: 커스텀 훅
-- `pages`: 컴포넌트를 조합해서 만든 페이지
-- `utils`: API 관련 함수, 커스텀 훅이 아닌 공통적으로 사용되는 함수
-- `react-app-env.d.ts`: 전역으로 사용되는 타입
+AWS 서버 환경 구축에 대한 자세한 내용은 [REST API 서버에 HTTPS 통신 설정하기](https://heony704.github.io/rest-api-https/), [ubuntu nodejs 프로젝트 환경 만들기](https://heony704.github.io/ubuntu-nodejs-setting/) 포스트에서 확인할 수 있습니다.
 
 ## 직접 실행하는 방법
 
