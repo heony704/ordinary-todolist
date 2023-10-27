@@ -21,7 +21,7 @@
 <br>
 
 <div align=center>
-  <a style="background:#2563eb; color:white;  padding:4px 8px; border-radius:8px" href="https://ordinary-todolist.netlify.app">평범한 투두리스트 사용해보기</a>
+  <a target="_blank" href="https://ordinary-todolist.netlify.app">평범한 투두리스트 사용해보기</a>
 </div>
 
 ## 기능
