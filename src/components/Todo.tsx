@@ -5,6 +5,8 @@ import useToast from 'src/hooks/useToast';
 
 import { deleteTodo, updateTodo } from 'src/api/handleTodo';
 
+import IconButton from 'src/components/IconButton';
+
 type TodoComponent = {
   id: number;
   todo: string;
@@ -71,34 +73,29 @@ export default function Todo({
   return (
     <>
       <Toast />
-      <div className={`${isCompleted && 'toggled'} todo todo-white`}>
+      <div
+        className={`${
+          isCompleted &&
+          'line-through bg-gray-200 text-gray-400 dark:bg-gray-800 dark:text-gray-600 dark:border-gray-700'
+        } rounded-lg flex w-full p-2.5 text-sm text-gray-900 dark:text-white border bg-white border-gray-300 dark:bg-gray-700 dark:border-gray-600`}
+      >
         {editMode ? (
           <>
             <textarea
               className={`${
                 isCompleted && 'dark:text-gray-400'
-              } flex-1 rounded-sm px-1 mr-1 bg-gray-100 dark:bg-gray-600`}
+              } flex-1 rounded-sm px-1 mr-1 bg-gray-100 dark:bg-gray-600 resize-none focus:outline-none`}
               value={todoValue}
               onChange={handleTodoValueChange}
             >
               {todo}
             </textarea>
-            <button
-              type="button"
-              className="icon-button"
-              onClick={editTodo}
-              aria-label="confirm"
-            >
+            <IconButton onClick={editTodo} ariaLabel="confirm">
               <HiCheck />
-            </button>
-            <button
-              type="button"
-              className="icon-button"
-              onClick={cancelEdit}
-              aria-label="cancel"
-            >
+            </IconButton>
+            <IconButton onClick={cancelEdit} ariaLabel="cancel">
               <HiX />
-            </button>
+            </IconButton>
           </>
         ) : (
           <>
@@ -109,22 +106,12 @@ export default function Todo({
             >
               {todo}
             </pre>
-            <button
-              type="button"
-              className="icon-button"
-              onClick={() => setEditMode(true)}
-              aria-label="edit"
-            >
+            <IconButton onClick={() => setEditMode(true)} ariaLabel="edit">
               <HiPencil />
-            </button>
-            <button
-              type="button"
-              className="icon-button"
-              onClick={removeTodo}
-              aria-label="delete"
-            >
+            </IconButton>
+            <IconButton onClick={removeTodo} ariaLabel="delete">
               <HiTrash />
-            </button>
+            </IconButton>
           </>
         )}
       </div>

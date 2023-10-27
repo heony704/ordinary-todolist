@@ -10,7 +10,7 @@ export default function TodolistPage() {
       <header className="flex justify-between items-center w-full">
         <Link
           to="/"
-          className="flex items-center text-2xl font-semibold text-black select-none"
+          className="flex items-center text-2xl font-semibold text-gray-900 dark:text-white select-none"
         >
           Todolist
         </Link>
