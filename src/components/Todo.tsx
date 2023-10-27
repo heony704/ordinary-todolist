@@ -75,9 +75,10 @@ export default function Todo({
       <Toast />
       <div
         className={`${
-          isCompleted &&
-          'line-through bg-gray-200 text-gray-400 dark:bg-gray-800 dark:text-gray-600 dark:border-gray-700'
-        } rounded-lg flex w-full p-2.5 text-sm text-gray-900 dark:text-white border bg-white border-gray-300 dark:bg-gray-700 dark:border-gray-600`}
+          isCompleted
+            ? 'line-through bg-gray-200 text-gray-400 dark:bg-gray-800 dark:text-gray-600 dark:border-gray-700'
+            : 'bg-white text-gray-900 dark:bg-gray-700 dark:text-white dark:border-gray-600'
+        } rounded-lg flex w-full p-2.5 text-sm border border-gray-300`}
       >
         {editMode ? (
           <>
