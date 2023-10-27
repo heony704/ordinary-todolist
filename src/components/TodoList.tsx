@@ -41,7 +41,7 @@ export default function TodoList({
   return (
     <div className="w-full mt-10 space-y-6">
       {error ? (
-        <div className="flex w-full justify-center text-center text-black leading-10">
+        <div className="flex w-full justify-center text-center text-gray-900 dark:text-white leading-10">
           오류로 인해 TodoList를 가져올 수 없습니다.
           <br />
           다시 시도해주세요.

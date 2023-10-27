@@ -16,8 +16,7 @@
   }
 
   body {
-    @apply bg-gray-50;
-    @apply dark:bg-gray-900;
+    @apply bg-gray-50 dark:bg-gray-900;
   }
 
   pre {
@@ -25,10 +24,6 @@
       BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI',
       'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic',
       'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
-  }
-
-  textarea {
-    @apply resize-none focus:outline-none;
   }
 
   ::-webkit-scrollbar {
@@ -42,109 +37,5 @@
   }
   ::-webkit-scrollbar-button {
     @apply w-0 h-0;
-  }
-}
-
-@layer components {
-  .todo {
-    @apply rounded-lg flex w-full p-2.5 text-sm;
-  }
-  .todo-white {
-    @apply text-black border;
-    @apply bg-white border-gray-300;
-    @apply dark:bg-gray-700 dark:border-gray-600;
-  }
-
-  .card-rounded {
-    @apply rounded-lg shadow;
-  }
-  .card-white {
-    @apply bg-white;
-    @apply dark:border dark:border-gray-700;
-  }
-  .card-red {
-    @apply bg-red-50 text-red-800;
-    @apply dark:bg-gray-800 dark:text-red-400;
-  }
-
-  .input-rounded {
-    @apply border rounded-lg;
-    @apply focus:outline-none focus:ring-1;
-  }
-  .input-white {
-    @apply text-black placeholder-gray-400 focus:border-blue-500 focus:ring-blue-500;
-    @apply bg-white border-gray-300;
-    @apply dark:bg-gray-700  dark:border-gray-600;
-  }
-  .input-gray {
-    @apply text-black placeholder-gray-400;
-    @apply bg-gray-50 border-gray-300 focus:ring-primary-600 focus:border-primary-600;
-    @apply dark:bg-gray-800 dark:border-gray-600 dark:focus:ring-primary-500 dark:focus:border-primary-500;
-  }
-  .input-red {
-    @apply text-red border-red-500 focus:ring-red-500 focus:border-red-500;
-    @apply bg-red-50 placeholder-red-300;
-    @apply dark:bg-red-700/25 dark:placeholder-red-300/30;
-  }
-
-  .button-rounded-lg {
-    @apply w-full px-5 py-2.5 rounded-lg;
-    @apply font-medium text-sm text-center;
-  }
-  .button-rounded-sm {
-    @apply py-1.5 px-2.5 rounded-lg;
-    @apply font-medium text-sm;
-  }
-  .button-primary {
-    @apply focus:outline-none focus:ring-2;
-    @apply bg-primary-600 hover:bg-primary-700 disabled:bg-primary-600/50;
-    @apply text-white focus:ring-primary-300;
-    @apply dark:disabled:text-gray-400 dark:focus:ring-primary-800;
-  }
-  .button-gray {
-    @apply border focus:ring-2 focus:outline-none;
-    @apply focus:ring-blue-500 focus:border-blue-500 focus:text-blue-700;
-    @apply bg-gray-50 text-gray-900 border-gray-200 hover:bg-gray-100 hover:text-primary-600;
-    @apply dark:bg-gray-900 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:text-white;
-  }
-  .button-red {
-    @apply focus:ring-2 focus:outline-none;
-    @apply text-white;
-    @apply bg-red-800 hover:bg-red-900 focus:ring-red-300;
-    @apply dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800;
-  }
-
-  .icon-button {
-    @apply rounded-lg ml-auto -mx-1.5 -my-1.5 p-1.5 flex justify-center items-center h-8 w-8 focus:ring-1 focus:ring-gray-300;
-    @apply text-gray-400 hover:bg-gray-100 hover:text-gray-900;
-    @apply dark:text-gray-500 dark:hover:bg-gray-600 dark:hover:text-white;
-  }
-}
-
-@layer utilities {
-  .bg-white {
-    @apply dark:bg-gray-900;
-  }
-
-  .text-black {
-    @apply text-gray-900;
-    @apply dark:text-white;
-  }
-  .text-gray {
-    @apply text-gray-500;
-    @apply dark:text-gray-400;
-  }
-  .text-primary {
-    @apply text-primary-600;
-    @apply dark:text-primary-500;
-  }
-  .text-red {
-    @apply text-red-500;
-  }
-
-  .toggled {
-    @apply line-through;
-    @apply bg-gray-200 text-gray-400;
-    @apply dark:bg-gray-800 dark:text-gray-600 dark:border-gray-700;
   }
 }
