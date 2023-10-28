@@ -58,6 +58,7 @@ src
  ┃ ┣ Alert.tsx
  ┃ ┣ Authorization.tsx // 로그인 여부에 따라 navigate해주는 컴포넌트
  ┃ ┣ Form.tsx
+ ┃ ┣ IconButton.tsx
  ┃ ┣ LoginForm.tsx
  ┃ ┣ LogoutButton.tsx
  ┃ ┣ RegisterForm.tsx
@@ -107,7 +108,7 @@ Lighthouse 기준 웹 접근성 분야에서 97점을 달성했습니다.
 투두리스트가 리렌더링되는 순간을 최소화할 수 있도록 rerenderFlag 상태를 만들어 필요한 순간에만 리렌더링하도록 관리했습니다.  
 또, `useCallback`과 `React.memo`를 이용해 변하지 않은 컴포넌트는 불필요하게 렌더링되지 않도록 했습니다.
 
-```jsx
+```tsx
 export default function TodoRerender() {
   const [rerenderFlag, setRerenderFlag] = useState(false);
   const rerender = useCallback(() => {
@@ -118,7 +119,7 @@ export default function TodoRerender() {
 }
 ```
 
-```jsx
+```tsx
 function TodoInput({ rerender }: TodoInputComponent) {
   // ...
 }
@@ -128,11 +129,42 @@ export default React.memo(TodoInput);
 
 자세한 내용은 [리액트 렌더링 최적화하기](https://heony704.github.io/react-rendering-optimization/) 포스트에서 확인하실 수 있습니다.
 
+### `Suspense`와 `lazy`를 사용하여 페이지 별 코드 분할 및 지연 로딩
+
+빌드 파일이 하나로 통합되어 있다면 투두리스트 페이지에서 회원가입 관련 코드가 함께 로드되는 등 사용되지 않는 코드까지 한꺼번에 로드되는 문제가 발생합니다.  
+`Suspense`와 `lazy`를 사용해 컴포넌트를 동적으로 import하여 페이지에 필요한 코드만 로드하도록 했습니다.
+
+```tsx
+import Authorization from 'src/components/Authorization';
+const AuthPage = lazy(() => import('src/pages/AuthPage'));
+const TodolistPage = lazy(() => import('src/pages/TodolistPage'));
+const LoginForm = lazy(() => import('src/components/LoginForm'));
+const RegisterForm = lazy(() => import('src/components/RegisterForm'));
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Suspense fallback={<Spinner />}>
+        <Routes>
+          <Route element={<Authorization />}>
+            <Route path="/" element={<TodolistPage />} />
+            <Route element={<AuthPage />}>
+              <Route path="/login" element={<LoginForm />} />
+              <Route path="/register" element={<RegisterForm />} />
+            </Route>
+          </Route>
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
+  );
+}
+```
+
 ### 데이터가 로딩 중인지를 상태로 관리하여 로딩 중에는 Spinner를 표시해 UX 개선
 
 로딩 중인지를 상태로 관리하여 데이터를 받아오기 전에는 Spinner를 표시하고, 데이터를 다 받아온 후엔 결과값을 보여주도록 했습니다.
 
-```jsx
+```tsx
 export default function TodoList({
   rerenderFlag,
   rerender,
@@ -171,7 +203,7 @@ export default function TodoList({
 
 로그인 API 요청 실패시, Alert을 표시하고 폼 내용을 비워 다시 로그인하도록 유도합니다.
 
-```jsx
+```tsx
 export default function LoginForm() {
   // ...
   const handleSubmit = async () => {
@@ -193,7 +225,7 @@ export default function LoginForm() {
 
 투두 삭제 API 요청 실패 시, Toast를 표시하고 페이지를 새로고침하여 문제없이 다시 투두를 삭제하도록 유도합니다.
 
-```jsx
+```tsx
 export default function Todo() {
   // ...
   const removeTodo = async () => {
@@ -211,7 +243,7 @@ export default function Todo() {
 
 투두리스트를 가져오는 API 요청 실패 시, 투두리스트를 가져올 수 없음을 명시하여 사용자가 페이지를 새로고침하거나 문제를 해결하도록 유도합니다.
 
-```jsx
+```tsx
 export default function TodoList({
   rerenderFlag,
   rerender,
@@ -226,7 +258,7 @@ export default function TodoList({
       })
       .catch(() => {
         setError(true);
-      })
+      });
   }, [rerenderFlag]);
 
   return (
