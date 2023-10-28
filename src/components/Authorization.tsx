@@ -25,7 +25,7 @@ export default function Authorization() {
 
   if (loading)
     return (
-      <div className="flex justify-center items-center w-full h-screen">
+      <div className="h-screen">
         <Spinner />
       </div>
     );

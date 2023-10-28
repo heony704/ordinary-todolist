@@ -33,7 +33,7 @@ export default function TodoList({
 
   if (loading)
     return (
-      <div className="flex justify-center items-center w-full mt-16">
+      <div className="mt-16">
         <Spinner />
       </div>
     );
