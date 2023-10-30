@@ -160,6 +160,8 @@ export default function App() {
 }
 ```
 
+자세한 내용은 [lazy와 Suspense로 코드 분할하고 로드 지연하기](https://heony704.github.io/react-code-splitting/) 포스트와 [Pull Request](https://github.com/heony704/ordinary-todolist/pull/8)에서 확인할 수 있습니다.
+
 ### 데이터가 로딩 중인지를 상태로 관리하여 로딩 중에는 Spinner를 표시해 UX 개선
 
 로딩 중인지를 상태로 관리하여 데이터를 받아오기 전에는 Spinner를 표시하고, 데이터를 다 받아온 후엔 결과값을 보여주도록 했습니다.
