@@ -73,6 +73,11 @@
             "pattern": "src/components/**",
             "group": "internal",
             "position": "after"
+          },
+          {
+            "pattern": "src/containers/**",
+            "group": "internal",
+            "position": "after"
           }
         ],
         "pathGroupsExcludedImportTypes": ["src/**"],

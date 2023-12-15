@@ -1,7 +1,10 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
 
-export default function AuthPage() {
+type CenteredLayoutProps = {
+  children: React.ReactNode;
+};
+
+export default function CenteredLayout({ children }: CenteredLayoutProps) {
   return (
     <div className="flex flex-col items-center justify-center px-6 py-8 space-y-6 mx-auto md:h-screen lg:py-0">
       <header>
@@ -9,9 +12,7 @@ export default function AuthPage() {
           Todolist
         </h1>
       </header>
-      <main className="w-full">
-        <Outlet />
-      </main>
+      <main className="w-full">{children}</main>
     </div>
   );
 }

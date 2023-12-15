@@ -5,7 +5,7 @@ import useToast from 'src/hooks/useToast';
 
 import { deleteTodo, updateTodo } from 'src/api/handleTodo';
 
-import IconButton from 'src/components/IconButton';
+import IconButton from 'src/containers/IconButton';
 
 type TodoComponent = {
   id: number;
