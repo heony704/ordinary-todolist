@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { LOGIN } from 'src/constants/routes';
 
 import useAlert from 'src/hooks/useAlert';
 
@@ -21,7 +22,7 @@ export default function RegisterPage() {
   const handleSubmit = async (inputs: any) => {
     try {
       await register(inputs.email, inputs.password);
-      navigate('/login');
+      navigate(LOGIN);
     } catch (error) {
       alert(
         '회원가입 실패',
@@ -73,7 +74,7 @@ export default function RegisterPage() {
         <Form.Button>Create an account</Form.Button>
         <Form.Helper>
           Already have an account?
-          <Form.HelperLink to="/login">Login here</Form.HelperLink>
+          <Form.HelperLink to={LOGIN}>Login here</Form.HelperLink>
         </Form.Helper>
       </Form>
     </CenteredLayout>

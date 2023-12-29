@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
+import { LOGIN } from 'src/constants/routes';
 
 import { getTodos } from 'src/api/handleTodo';
 
@@ -31,7 +32,7 @@ export default function Authorization() {
     );
 
   if (location.pathname === '/' && !logined) {
-    return <Navigate to="/login" />;
+    return <Navigate to={LOGIN} />;
   }
 
   if (location.pathname !== '/' && logined) {

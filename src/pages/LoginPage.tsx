@@ -1,4 +1,5 @@
 import React from 'react';
+import { REGISTER } from 'src/constants/routes';
 
 import useAlert from 'src/hooks/useAlert';
 
@@ -57,7 +58,7 @@ export default function LoginPage() {
         <Form.Button>Sign in</Form.Button>
         <Form.Helper>
           Don’t have an account yet?
-          <Form.HelperLink to="/register">Sign up</Form.HelperLink>
+          <Form.HelperLink to={REGISTER}>Sign up</Form.HelperLink>
         </Form.Helper>
       </Form>
     </CenteredLayout>

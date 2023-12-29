@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { LOGIN, REGISTER } from 'src/constants/routes';
 
 import Spinner from 'src/components/Spinner';
 
@@ -22,8 +23,8 @@ export default function App() {
         <Routes>
           <Route element={<Authorization />}>
             <Route path="/" element={<TodolistPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
+            <Route path={LOGIN} element={<LoginPage />} />
+            <Route path={REGISTER} element={<RegisterPage />} />
           </Route>
         </Routes>
       </Suspense>
