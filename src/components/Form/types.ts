@@ -9,12 +9,12 @@ export type FormState = {
   resetForm: () => void;
 };
 
-export type errorFunction = () => Error;
+export type ErrorFunction = () => Error;
 
 export type DefaultFormState = {
   inputs: null;
   valids: null;
-  setInput: errorFunction;
-  setValid: errorFunction;
-  resetForm: errorFunction;
+  setInput: ErrorFunction;
+  setValid: ErrorFunction;
+  resetForm: ErrorFunction;
 };

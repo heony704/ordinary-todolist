@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { getTodos } from 'src/api/handleTodo';
 
 import Spinner from 'src/components/Spinner';
+
 import Todo from 'src/containers/Todo';
 
 type TodoListComponent = {
