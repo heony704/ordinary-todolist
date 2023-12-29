@@ -12,7 +12,9 @@ export default function CenteredLayout({ children }: CenteredLayoutProps) {
           Todolist
         </h1>
       </header>
-      <main className="w-full">{children}</main>
+      <main className="w-full">
+        <div className="flex w-full justify-center">{children}</div>
+      </main>
     </div>
   );
 }
