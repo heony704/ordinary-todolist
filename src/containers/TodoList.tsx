@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from 'react';
 
+import useRerender from 'src/hooks/useRerender';
+
 import { getTodos } from 'src/api/handleTodo';
 
 import Spinner from 'src/components/Spinner';
 
 import Todo from 'src/containers/Todo';
 
-type TodoListProps = {
-  rerenderFlag: boolean;
-  rerender: () => void;
-};
-
-export default function TodoList({ rerenderFlag, rerender }: TodoListProps) {
+export default function TodoList() {
   const [todoList, setTodoList] = useState<Todo[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+
+  const { rerenderFlag, rerender } = useRerender();
 
   useEffect(() => {
     getTodos()

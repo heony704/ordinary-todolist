@@ -1,21 +1,20 @@
 import React, { useState } from 'react';
 import { HiOutlineChevronDown } from 'react-icons/hi';
 
+import useRerender from 'src/hooks/useRerender';
 import useToast from 'src/hooks/useToast';
 
 import { createTodo } from 'src/api/handleTodo';
 
-type TodoInputProps = {
-  rerender: () => void;
-};
-
-function TodoInput({ rerender }: TodoInputProps) {
+function TodoInput() {
   const [newTodo, setNewTodo] = useState('');
   const handleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewTodo(event.target.value);
   };
 
   const [Toast, toast] = useToast();
+
+  const { rerender } = useRerender();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
