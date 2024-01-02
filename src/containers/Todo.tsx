@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { HiCheck, HiPencil, HiTrash, HiX } from 'react-icons/hi';
 
+import useRerender from 'src/hooks/useRerender';
 import useToast from 'src/hooks/useToast';
 
 import { deleteTodo, updateTodo } from 'src/api/handleTodo';
@@ -11,15 +12,9 @@ type TodoProps = {
   id: number;
   todo: string;
   isCompleted: boolean;
-  rerenderTodoList?: () => void;
 };
 
-export default function Todo({
-  id,
-  todo,
-  isCompleted,
-  rerenderTodoList = () => {},
-}: TodoProps) {
+export default function Todo({ id, todo, isCompleted }: TodoProps) {
   const [editMode, setEditMode] = useState(false);
   const [todoValue, setTodoValue] = useState(todo);
   const handleTodoValueChange = (
@@ -30,10 +25,12 @@ export default function Todo({
 
   const [Toast, toast] = useToast();
 
+  const { rerender } = useRerender();
+
   const toggle = async () => {
     try {
       await updateTodo(id, todo, !isCompleted);
-      rerenderTodoList();
+      rerender();
     } catch {
       toast('오류가 발생했습니다. 다시 시도해주세요.');
       setTimeout(() => window.location.reload(), 1500);
@@ -50,7 +47,7 @@ export default function Todo({
     if (trimmedValue !== todo) {
       try {
         await updateTodo(id, trimmedValue, isCompleted);
-        rerenderTodoList();
+        rerender();
       } catch {
         toast('오류가 발생했습니다. 다시 시도해주세요.');
         setTimeout(() => window.location.reload(), 1500);
@@ -63,7 +60,7 @@ export default function Todo({
   const removeTodo = async () => {
     try {
       await deleteTodo(id);
-      rerenderTodoList();
+      rerender();
     } catch {
       toast('오류가 발생했습니다. 다시 시도해주세요.');
       setTimeout(() => window.location.reload(), 1500);

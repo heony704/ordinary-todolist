@@ -13,7 +13,7 @@ export default function TodoList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  const { rerenderFlag, rerender } = useRerender();
+  const { rerenderFlag } = useRerender();
 
   useEffect(() => {
     getTodos()
@@ -53,7 +53,6 @@ export default function TodoList() {
               id={todo.id}
               todo={todo.todo}
               isCompleted={todo.isCompleted}
-              rerenderTodoList={rerender}
             />
           ))
       )}
