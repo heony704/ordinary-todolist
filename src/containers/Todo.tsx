@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { IconType } from 'react-icons';
 import { HiCheck, HiPencil, HiTrash, HiX } from 'react-icons/hi';
 
 import useRerender from 'src/hooks/useRerender';
@@ -6,7 +7,25 @@ import useToast from 'src/hooks/useToast';
 
 import { deleteTodo, updateTodo } from 'src/api/handleTodo';
 
-import IconButton from 'src/containers/IconButton';
+import Button from 'src/components/Button';
+
+type IconButtonProps = {
+  onClick: () => void;
+  label: string;
+  Svg: IconType;
+};
+
+function IconButton({ onClick, label, Svg }: IconButtonProps) {
+  return (
+    <Button
+      onClick={onClick}
+      label={label}
+      styles={{ border: false, shape: 'square', color: 'gray' }}
+    >
+      <Svg className="h-4 w-4" />
+    </Button>
+  );
+}
 
 type TodoProps = {
   id: number;
@@ -75,25 +94,21 @@ export default function Todo({ id, todo, isCompleted }: TodoProps) {
           isCompleted
             ? 'line-through bg-gray-200 text-gray-400 dark:bg-gray-800 dark:text-gray-600 dark:border-gray-700'
             : 'bg-white text-gray-900 dark:bg-gray-700 dark:text-white dark:border-gray-600'
-        } rounded-lg flex w-full p-2.5 text-sm border border-gray-300`}
+        } rounded-lg flex items-center w-full p-2.5 space-x-1 text-sm border border-gray-300`}
       >
         {editMode ? (
           <>
             <textarea
               className={`${
                 isCompleted && 'dark:text-gray-400'
-              } flex-1 rounded-sm px-1 mr-1 bg-gray-100 dark:bg-gray-600 resize-none focus:outline-none`}
+              } flex-1 rounded-sm px-1 bg-gray-100 dark:bg-gray-600 resize-none focus:outline-none`}
               value={todoValue}
               onChange={handleTodoValueChange}
             >
               {todo}
             </textarea>
-            <IconButton onClick={editTodo} ariaLabel="confirm">
-              <HiCheck />
-            </IconButton>
-            <IconButton onClick={cancelEdit} ariaLabel="cancel">
-              <HiX />
-            </IconButton>
+            <IconButton onClick={editTodo} label="confirm" Svg={HiCheck} />
+            <IconButton onClick={cancelEdit} label="cancel" Svg={HiX} />
           </>
         ) : (
           <>
@@ -104,12 +119,12 @@ export default function Todo({ id, todo, isCompleted }: TodoProps) {
             >
               {todo}
             </pre>
-            <IconButton onClick={() => setEditMode(true)} ariaLabel="edit">
-              <HiPencil />
-            </IconButton>
-            <IconButton onClick={removeTodo} ariaLabel="delete">
-              <HiTrash />
-            </IconButton>
+            <IconButton
+              onClick={() => setEditMode(true)}
+              label="edit"
+              Svg={HiPencil}
+            />
+            <IconButton onClick={removeTodo} label="delete" Svg={HiTrash} />
           </>
         )}
       </div>
