@@ -1,13 +1,13 @@
 import React from 'react';
 import { HiExclamationCircle } from 'react-icons/hi';
 
-type AlertType = {
+type AlertProps = {
   title: string;
   contents: string;
   onConfirm: () => void;
 };
 
-export default function Alert({ title, contents, onConfirm }: AlertType) {
+export default function Alert({ title, contents, onConfirm }: AlertProps) {
   return (
     <div className="bg-black/30 fixed inset-0 z-20 overflow-hidden flex w-screen h-screen">
       <div

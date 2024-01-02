@@ -1,12 +1,12 @@
 import React from 'react';
 import { HiExclamation } from 'react-icons/hi';
 
-type ToastType = {
+type ToastProps = {
   text: string;
   onClose: () => void;
 };
 
-export default function Toast({ text, onClose }: ToastType) {
+export default function Toast({ text, onClose }: ToastProps) {
   return (
     <div
       className="animate-toast opacity-0 fixed inset-0 z-20 bg-black/20 select-none pt-16"

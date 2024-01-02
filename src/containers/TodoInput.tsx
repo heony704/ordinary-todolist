@@ -5,11 +5,11 @@ import useToast from 'src/hooks/useToast';
 
 import { createTodo } from 'src/api/handleTodo';
 
-type TodoInputComponent = {
+type TodoInputProps = {
   rerender: () => void;
 };
 
-function TodoInput({ rerender }: TodoInputComponent) {
+function TodoInput({ rerender }: TodoInputProps) {
   const [newTodo, setNewTodo] = useState('');
   const handleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewTodo(event.target.value);

@@ -7,7 +7,7 @@ import { deleteTodo, updateTodo } from 'src/api/handleTodo';
 
 import IconButton from 'src/containers/IconButton';
 
-type TodoComponent = {
+type TodoProps = {
   id: number;
   todo: string;
   isCompleted: boolean;
@@ -19,7 +19,7 @@ export default function Todo({
   todo,
   isCompleted,
   rerenderTodoList = () => {},
-}: TodoComponent) {
+}: TodoProps) {
   const [editMode, setEditMode] = useState(false);
   const [todoValue, setTodoValue] = useState(todo);
   const handleTodoValueChange = (
