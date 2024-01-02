@@ -2,17 +2,7 @@ import React, { createContext, useContext, useMemo, useState } from 'react';
 
 import { DefaultFormState, FormState, Input, Valid } from './types';
 
-function contextError() {
-  return new Error('이 값은 Form 컴포넌트 외부에서 사용할 수 없습니다.');
-}
-
-const defaultFormContext = {
-  inputs: null,
-  valids: null,
-  setInput: contextError,
-  setValid: contextError,
-  resetForm: contextError,
-};
+const defaultFormContext = null;
 
 const FormContext = createContext<FormState | DefaultFormState>(
   defaultFormContext,
@@ -56,21 +46,26 @@ export function FormContextProvider({ children }: FormContextProviderProps) {
   );
 }
 
-export const useFormInputs = () => {
-  const { inputs, setInput } = useContext(FormContext);
-  if (inputs === null)
+function filterOutDefault<T>(context: DefaultFormState | T): T {
+  if (context === null)
     throw new Error('이 값은 Form 컴포넌트 외부에서 사용할 수 없습니다.');
+  return context;
+}
+
+export const useFormInputs = () => {
+  const formContext = useContext(FormContext);
+  const { inputs, setInput } = filterOutDefault(formContext);
   return { inputs, setInput };
 };
 
 export const useFormValids = () => {
-  const { valids, setValid } = useContext(FormContext);
-  if (valids === null)
-    throw new Error('이 값은 Form 컴포넌트 외부에서 사용할 수 없습니다.');
+  const formContext = useContext(FormContext);
+  const { valids, setValid } = filterOutDefault(formContext);
   return { valids, setValid };
 };
 
 export const useForm = () => {
-  const { resetForm } = useContext(FormContext);
+  const formContext = useContext(FormContext);
+  const { resetForm } = filterOutDefault(formContext);
   return { resetForm };
 };
