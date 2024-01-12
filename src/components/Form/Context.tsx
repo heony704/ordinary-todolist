@@ -18,7 +18,7 @@ export function FormContextProvider({ children }: FormContextProviderProps) {
   };
 
   const [valids, setValids] = useState<Valid>({});
-  const setValid = (name: string, isValid: boolean | null) => {
+  const setValid = (name: string, isValid: boolean) => {
     setValids(prev => ({ ...prev, [name]: isValid }));
   };
 
@@ -46,6 +46,7 @@ export function FormContextProvider({ children }: FormContextProviderProps) {
   );
 }
 
+// Context 값이 초기값일 경우 에러 발생
 function filterOutDefault<T>(context: DefaultFormState | T): T {
   if (context === null)
     throw new Error('이 값은 Form 컴포넌트 외부에서 사용할 수 없습니다.');

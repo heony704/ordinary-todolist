@@ -4,11 +4,13 @@ import { useFormValids } from './Context';
 
 type FormValidationGuideProps = {
   name?: string;
+  errorDisplayFlag?: boolean;
   children: React.ReactNode;
 };
 
 export default function FormValidationGuide({
   name = undefined,
+  errorDisplayFlag = false,
   children,
 }: FormValidationGuideProps) {
   if (name === undefined)
@@ -18,8 +20,9 @@ export default function FormValidationGuide({
 
   const { valids } = useFormValids();
   const isValid = valids[name] ?? true;
+  const isError = errorDisplayFlag === true && isValid === false;
 
-  if (isValid === true) return null;
+  if (isError === false) return null;
 
   return (
     <div className="absolute">

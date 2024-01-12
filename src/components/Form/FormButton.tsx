@@ -9,9 +9,7 @@ type FormButtonProps = {
 export default function FormButton({ children }: FormButtonProps) {
   const { valids } = useFormValids();
 
-  const isAnyInvalid =
-    Object.values(valids).includes(null) ||
-    Object.values(valids).includes(false);
+  const isAnyInvalid = Object.values(valids).includes(false);
 
   return (
     <button
